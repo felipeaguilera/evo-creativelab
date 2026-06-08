@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="es" data-lang="es" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EVO Creative Lab — Claridad sobre El Ruido</title>
+  <meta name="description" content="EVO Creative Lab construye sistemas de comunicación para negocios que quieren comunicar con claridad: marca, canales digitales y herramientas que funcionan solas.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Krub:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    /* TOKENS */
+    :root {
+      --orange:      #E4572E;
+      --orange-btn:  #CC4A24;
+      --orange-dk:   #c93d1a;
+      --dark:        #111111;
+      --surface:     #1C1C1C;
+      --light:       #F5F3EE;
+      --bg:          #FFFFFF;
+      --text:        #0E0E0E;
+      --text-2:      #5A5A5A;
+      --text-3:      #696969;
+      --border:      #E5E2DC;
+      --nav-bg:      rgba(255,255,255,0.96);
+      --px:          1.25rem;
+      --max-w:       1100px;
+    }
+    [data-theme="dark"] {
+      --light:    #1E1C19;
+      --bg:       #141210;
+      --text:     #F0EDE6;
+      --text-2:   #9A9590;
+      --text-3:   #888480;
+      --border:   rgba(255,255,255,0.12);
+      --nav-bg:   rgba(20,18,16,0.97);
+    }
+    [data-theme="dark"] .nav-toggle {
+      color: var(--text-2);
+      border-color: rgba(255,255,255,0.2);
+    }
+    [data-theme="dark"] .nav-toggle:hover {
+      color: var(--text);
+      border-color: rgba(255,255,255,0.45);
+    }
+
+    body {
+      font-family: 'Krub', sans-serif;
+      font-weight: 400;
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--text);
+      background: var(--bg);
+      transition: background 0.2s ease, color 0.2s ease;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* TYPOGRAPHY */
+    .label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.6875rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-3);
+    }
+    .label::before {
+      content: '';
+      display: inline-block;
+      width: 14px;
+      height: 2px;
+      background: var(--orange);
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+    .p-lead {
+      font-family: 'Krub', sans-serif;
+      font-weight: 500;
+      font-size: 1.0625rem;
+      color: var(--text);
+      line-height: 1.65;
+      margin-bottom: 0.875rem;
+    }
+    .p-body {
+      font-family: 'Krub', sans-serif;
+      font-weight: 400;
+      font-size: 0.9rem;
+      color: var(--text-2);
+      line-height: 1.8;
+      margin-bottom: 0.75rem;
+    }
+    .p-body:last-child, .p-lead:last-child { margin-bottom: 0; }
+    strong { font-weight: 600; color: var(--text); }
+
+    /* UTILITIES */
+    .wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--px); }
+    .section-py { padding-top: 4rem; padding-bottom: 4rem; }
+    .section-header { margin-bottom: 2.5rem; }
+    .section-title {
+      font-family: 'Inter', sans-serif;
+      font-weight: 800;
+      font-size: clamp(1.75rem, 6vw, 2.75rem);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      line-height: 1.05;
+      margin-top: 0.75rem;
+      color: var(--text);
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--nav-bg);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      transition: background 0.2s;
+    }
+    .nav-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 var(--px);
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    /* CSS-only mark — no SVG file */
+    .nav-mark {
+      background: var(--orange);
+      width: 38px;
+      height: 27px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .nav-mark span {
+      font-family: 'Inter', sans-serif;
+      font-weight: 800;
+      font-size: 10px;
+      color: #fff;
+      letter-spacing: 2px;
+      margin-right: -2px; /* compensate trailing letter-spacing for visual centering */
+    }
+    .nav-name {
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text);
+    }
+    .nav-links { display: none; gap: 24px; list-style: none; }
+    .nav-links a {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 0.6875rem;
+      color: var(--text-3);
+      text-decoration: none;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.15s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-controls { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+    .nav-toggle {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      background: transparent;
+      color: var(--text-3);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 5px 10px;
+      cursor: pointer;
+      transition: color 0.15s, border-color 0.15s;
+      line-height: 1;
+    }
+    .nav-toggle:hover { color: var(--text); border-color: var(--text-3); }
+    .nav-toggle i { font-size: 14px; vertical-align: -2px; }
+    .nav-cta {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 0.6875rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: var(--orange-btn);
+      color: white;
+      padding: 8px 14px;
+      border-radius: 2px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: background 0.15s;
+      white-space: nowrap;
+    }
+    .nav-cta:hover { background: var(--orange-dk); }
+
+    /* BUTTONS */
+    .btn {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 0.8125rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 13px 22px;
+      border-radius: 2px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      transition: background 0.15s, border-color 0.15s;
+      cursor: pointer;
+      border: 1px solid transparent;
+    }
+    .btn-block { width: 100%; justify-content: center; }
+    .btn-primary {
+      background: var(--orange-btn);
+      color: white;
+      border-color: var(--orange-btn);
+    }
+    .btn-primary:hover { background: var(--orange-dk); border-color: var(--orange-dk); }
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border-color: var(--border);
+    }
+    .btn-outline:hover { border-color: var(--text-3); }
+    .btn-outline-white {
+      background: transparent;
+      color: white;
+      border-color: rgba(255,255,255,0.28);
+    }
+    .btn-outline-white:hover { border-color: rgba(255,255,255,0.65); }
+
+    /* HERO — centered, full viewport height */
+    .hero {
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      min-height: calc(100vh - 56px);
+      display: flex;
+      align-items: center;
+    }
+    .hero-center {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+      width: 100%;
+    }
+    .hero-eyebrow { margin-bottom: 2rem; }
+    .hero-h1 {
+      font-family: 'Inter', sans-serif;
+      font-weight: 800;
+      font-size: clamp(3rem, 10vw, 7rem);
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      color: var(--text);
+      margin-bottom: 2rem;
+    }
+    .hero-accent { color: var(--orange); }
+    .hero-copy {
+      font-size: 1rem;
+      color: var(--text-2);
+      line-height: 1.75;
+      margin-bottom: 2.5rem;
+      max-width: 380px;
+    }
+    .hero-actions { display: flex; flex-direction: column; gap: 12px; align-items: center; }
+
+    /* ABOUT */
+    .about { background: var(--light); }
+    .about-heading {
+      font-family: 'Inter', sans-serif;
+      font-weight: 800;
+      font-size: clamp(1.75rem, 6vw, 2.75rem);
+      line-height: 1.05;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      color: var(--text);
+      margin-top: 0.75rem;
+      margin-bottom: 2rem;
+    }
+    .about-heading .accent { color: var(--orange); }
+
+    /* SERVICES */
+    .services { background: var(--bg); }
+    .services-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+    .service-card {
+      background: var(--bg);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.875rem;
+    }
+    .service-top { display: flex; align-items: flex-start; justify-content: space-between; }
+    .service-num { font-family: 'IBM Plex Mono', monospace; font-size: 0.6875rem; color: var(--orange); letter-spacing: 0.12em; }
+    .service-icon { font-size: 22px; color: var(--orange); line-height: 1; }
+    .service-name { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 1rem; color: var(--text); }
+    .service-tags { display: flex; flex-wrap: wrap; gap: 5px; padding-top: 0.5rem; border-top: 1px solid var(--border); }
+    .tag {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.5625rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      background: var(--light);
+      padding: 3px 7px;
+      border-radius: 2px;
+    }
+
+    /* PROCESS — work.co style */
+    .process { background: var(--light); }
+    .process-list { border-top: 1px solid var(--border); }
+    .process-item {
+      padding: 1.875rem 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 0.625rem;
+    }
+    .process-num {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.625rem;
+      color: var(--orange);
+      letter-spacing: 0.15em;
+      margin-bottom: 0.25rem;
+    }
+    .process-title {
+      font-family: 'Inter', sans-serif;
+      font-weight: 800;
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
+
+    /* FORMATS */
+    .formats { background: var(--bg); }
+    .formats-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+    .format-card { background: var(--bg); padding: 1.5rem; }
+    .format-top { display: flex; align-items: center; gap: 10px; margin-bottom: 0.75rem; }
+    .format-icon { font-size: 20px; color: var(--orange); }
+    .format-name { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 0.9375rem; color: var(--text); }
+
+    /* CONTACT */
+    .contact-section {
+      background: var(--dark);
+      border-top: 3px solid var(--orange);
+    }
+    .contact-grid { display: flex; flex-direction: column; gap: 3rem; }
+    .contact-cta-label { color: rgba(255,255,255,0.35); margin-bottom: 1.25rem; }
+    .contact-h2 {
+      font-family: 'Inter', sans-serif;
+      font-weight: 800;
+      font-size: clamp(1.875rem, 7vw, 3rem);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      line-height: 1.02;
+      color: white;
+      margin-bottom: 1rem;
+    }
+    .contact-sub { font-size: 0.9375rem; color: rgba(255,255,255,0.5); line-height: 1.7; margin-bottom: 2rem; }
+    .contact-direct { display: flex; flex-direction: column; gap: 8px; }
+    .contact-form { display: flex; flex-direction: column; gap: 0.875rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+    .form-field { display: flex; flex-direction: column; gap: 4px; }
+    .form-label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.625rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+    }
+    .form-input {
+      width: 100%;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 2px;
+      padding: 11px 14px;
+      color: white;
+      font-family: 'Krub', sans-serif;
+      font-size: 0.9375rem;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    .form-input:focus { border-color: var(--orange); }
+    .form-input::placeholder { color: rgba(255,255,255,0.25); }
+    textarea.form-input { resize: vertical; min-height: 100px; }
+
+    /* FOOTER */
+    footer {
+      background: var(--surface);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 1.5rem var(--px);
+    }
+    .footer-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.625rem;
+      text-align: center;
+    }
+    .footer-brand { display: flex; align-items: center; gap: 10px; }
+    .footer-mark {
+      background: var(--orange);
+      width: 28px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .footer-mark span {
+      font-family: 'Inter', sans-serif;
+      font-weight: 800;
+      font-size: 7px;
+      color: #fff;
+      letter-spacing: 1.5px;
+      margin-right: -1.5px; /* compensate trailing letter-spacing */
+    }
+    .footer-name {
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 0.6875rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.38);
+    }
+    .footer-info {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.625rem;
+      color: rgba(255,255,255,0.2);
+      letter-spacing: 0.05em;
+    }
+
+    /* RESPONSIVE */
+    @media (min-width: 540px) {
+      :root { --px: 2rem; }
+      .hero-actions { flex-direction: row; }
+    }
+
+    @media (min-width: 768px) {
+      :root { --px: 3rem; }
+      .section-py { padding-top: 5.5rem; padding-bottom: 5.5rem; }
+      .nav-links { display: flex; }
+      .about-inner {
+        display: grid;
+        grid-template-columns: 1fr 1.5fr;
+        gap: 5rem;
+        align-items: start;
+      }
+      .about-heading { margin-bottom: 0; }
+      .services-grid { display: grid; grid-template-columns: 1fr 1fr; }
+      .process-item {
+        flex-direction: row;
+        gap: 4rem;
+        align-items: baseline;
+      }
+      .process-title-col { min-width: 280px; flex-shrink: 0; }
+      .formats-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
+      .contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; align-items: start; }
+      .contact-direct { flex-direction: row; flex-wrap: wrap; }
+      .footer-inner { flex-direction: row; justify-content: space-between; text-align: left; }
+    }
+
+    @media (min-width: 1024px) {
+      :root { --px: 4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="#" class="nav-brand">
+        <div class="nav-mark" aria-hidden="true"><span>EVO</span></div>
+        <span class="nav-name">EVO Creative Lab</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#servicios" data-es="Servicios" data-en="Services">Servicios</a></li>
+        <li><a href="#proceso" data-es="Proceso" data-en="Process">Proceso</a></li>
+        <li><a href="#contacto" data-es="Contacto" data-en="Contact">Contacto</a></li>
+      </ul>
+      <div class="nav-controls">
+        <button class="nav-toggle" onclick="toggleLang()" id="lang-btn" aria-label="Switch language">EN</button>
+        <button class="nav-toggle" onclick="toggleTheme()" id="theme-btn" aria-label="Toggle dark mode">
+          <i class="ph ph-moon" id="theme-icon"></i>
+        </button>
+        <a href="#contacto" class="nav-cta">
+          <span data-es="Escribir" data-en="Contact">Escribir</span>
+          <i class="ph ph-paper-plane-tilt" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-center wrap">
+      <p class="label hero-eyebrow" data-es="Estrategia · Marca · Sistemas digitales" data-en="Strategy · Brand · Digital systems">Estrategia · Marca · Sistemas digitales</p>
+      <h1 class="hero-h1">
+        <span data-es="CLARIDAD" data-en="CLARITY">CLARIDAD</span><br>
+        <span data-es="SOBRE EL" data-en="OVER THE">SOBRE EL</span><br>
+        <span data-es="RUIDO" data-en="NOISE">RUIDO</span><span class="hero-accent">.</span>
+      </h1>
+      <p class="hero-copy" data-es="La mayoría de los negocios sabe lo que vale. Pocos saben cómo decirlo." data-en="Most businesses know their value. Few know how to communicate it.">La mayoría de los negocios sabe lo que vale. Pocos saben cómo decirlo.</p>
+      <div class="hero-actions">
+        <a href="mailto:info@evo.cl" class="btn btn-primary">
+          <i class="ph ph-envelope-simple" aria-hidden="true"></i>
+          <span data-es="Escribir por email" data-en="Get in touch">Escribir por email</span>
+        </a>
+        <a href="https://wa.me/56982393697?text=Hola%20Felipe%2C%20te%20escribo%20desde%20evo.cl" class="btn btn-outline" target="_blank" rel="noopener">
+          <i class="ph ph-whatsapp-logo" aria-hidden="true"></i>
+          <span>WhatsApp</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUÉ ES EVO -->
+  <section class="about section-py">
+    <div class="wrap">
+      <div class="about-inner">
+        <div>
+          <p class="label" data-es="Qué es EVO Creative Lab" data-en="What is EVO Creative Lab">Qué es EVO Creative Lab</p>
+          <h2 class="about-heading">
+            <span data-es="Estrategia<br>digital que<br>" data-en="Digital strategy<br>that<br>">Estrategia<br>digital que<br></span><span class="accent" data-es="se queda." data-en="lasts.">se queda.</span>
+          </h2>
+        </div>
+        <div>
+          <p class="p-lead" data-es="EVO Creative Lab es una <strong>consultora de comunicación y producción digital</strong>. Trabajamos en el cruce entre estrategia de marca y ejecución tecnológica." data-en="EVO Creative Lab is a <strong>communication and digital production consultancy</strong>. We work at the intersection of brand strategy and technological execution.">EVO Creative Lab es una <strong>consultora de comunicación y producción digital</strong>. Trabajamos en el cruce entre estrategia de marca y ejecución tecnológica.</p>
+          <p class="p-body" data-es="No hacemos campañas que se agotan en un mes. Construimos <strong>sistemas</strong>: identidades que guían, sitios que convierten, procesos que se automatizan. El resultado siempre termina en algo concreto que el cliente puede operar sin depender de nadie." data-en="We don't run campaigns that expire in a month. We build <strong>systems</strong>: identities that guide, websites that convert, processes that automate. The result is always something concrete the client can operate without depending on anyone.">No hacemos campañas que se agotan en un mes. Construimos <strong>sistemas</strong>: identidades que guían, sitios que convierten, procesos que se automatizan. El resultado siempre termina en algo concreto que el cliente puede operar sin depender de nadie.</p>
+          <p class="p-body" data-es="El foco es el negocio, no el servicio. Entramos con preguntas y salimos con un <strong>entregable que funciona solo</strong>." data-en="The focus is the business, not the service. We come in with questions and leave with a <strong>deliverable that works on its own</strong>.">El foco es el negocio, no el servicio. Entramos con preguntas y salimos con un <strong>entregable que funciona solo</strong>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section class="services section-py" id="servicios">
+    <div class="wrap">
+      <div class="section-header">
+        <p class="label" data-es="Servicios" data-en="Services">Servicios</p>
+        <h2 class="section-title" data-es="De la estrategia<br>al entregable." data-en="From strategy<br>to delivery.">De la estrategia<br>al entregable.</h2>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-top">
+            <span class="service-num">01</span>
+            <i class="ph ph-palette service-icon" aria-hidden="true"></i>
+          </div>
+          <div class="service-name" data-es="Sistemas de marca" data-en="Brand systems">Sistemas de marca</div>
+          <p class="p-lead" data-es="Posicionamiento, identidad visual y tono de comunicación." data-en="Positioning, visual identity, and communication tone.">Posicionamiento, identidad visual y tono de comunicación.</p>
+          <p class="p-body" data-es="Para negocios que necesitan saber qué dicen antes de salir a decirlo. El resultado es un <strong>sistema que cualquier miembro del equipo puede aplicar</strong>, no solo una carpeta con archivos de diseño." data-en="For businesses that need to know what they're saying before going out to say it. The result is a <strong>system any team member can apply</strong>, not just a folder with design files.">Para negocios que necesitan saber qué dicen antes de salir a decirlo. El resultado es un <strong>sistema que cualquier miembro del equipo puede aplicar</strong>, no solo una carpeta con archivos de diseño.</p>
+          <div class="service-tags">
+            <span class="tag" data-es="Identidad visual" data-en="Visual identity">Identidad visual</span>
+            <span class="tag" data-es="Posicionamiento" data-en="Positioning">Posicionamiento</span>
+            <span class="tag" data-es="Guías de marca" data-en="Brand guidelines">Guías de marca</span>
+            <span class="tag">Naming</span>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-top">
+            <span class="service-num">02</span>
+            <i class="ph ph-globe-simple service-icon" aria-hidden="true"></i>
+          </div>
+          <div class="service-name" data-es="Canales digitales" data-en="Digital channels">Canales digitales</div>
+          <p class="p-lead" data-es="Sitios web, e-commerce y email marketing con propósito." data-en="Websites, e-commerce, and purposeful email marketing.">Sitios web, e-commerce y email marketing con propósito.</p>
+          <p class="p-body" data-es="Cada canal tiene un <strong>recorrido claro para quien llega</strong> y una razón de existir. Construidos para ser medibles, mantenibles y escalables." data-en="Each channel has a <strong>clear journey for every visitor</strong> and a reason to exist. Built to be measurable, maintainable, and scalable.">Cada canal tiene un <strong>recorrido claro para quien llega</strong> y una razón de existir. Construidos para ser medibles, mantenibles y escalables.</p>
+          <div class="service-tags">
+            <span class="tag" data-es="Sitios web" data-en="Websites">Sitios web</span>
+            <span class="tag">E-commerce</span>
+            <span class="tag" data-es="Email marketing" data-en="Email marketing">Email marketing</span>
+            <span class="tag">CRM</span>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-top">
+            <span class="service-num">03</span>
+            <i class="ph ph-presentation-chart service-icon" aria-hidden="true"></i>
+          </div>
+          <div class="service-name" data-es="Comunicación corporativa" data-en="Corporate communications">Comunicación corporativa</div>
+          <p class="p-lead" data-es="Presentaciones, propuestas y materiales de venta." data-en="Presentations, proposals, and sales materials.">Presentaciones, propuestas y materiales de venta.</p>
+          <p class="p-body" data-es="<strong>Documentos que funcionan sin explicación adicional</strong>. Todo lo que el negocio usa para comunicarse con clientes, socios e inversores." data-en="<strong>Documents that work without additional explanation</strong>. Everything the business uses to communicate with clients, partners, and investors."><strong>Documentos que funcionan sin explicación adicional</strong>. Todo lo que el negocio usa para comunicarse con clientes, socios e inversores.</p>
+          <div class="service-tags">
+            <span class="tag" data-es="Presentaciones" data-en="Presentations">Presentaciones</span>
+            <span class="tag" data-es="Propuestas" data-en="Proposals">Propuestas</span>
+            <span class="tag" data-es="Materiales de venta" data-en="Sales materials">Materiales de venta</span>
+            <span class="tag" data-es="Reportes" data-en="Reports">Reportes</span>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-top">
+            <span class="service-num">04</span>
+            <i class="ph ph-cpu service-icon" aria-hidden="true"></i>
+          </div>
+          <div class="service-name" data-es="Digitalización con IA" data-en="AI-powered digitalization">Digitalización con IA</div>
+          <p class="p-lead" data-es="Dashboards, automatización y flujos que reemplazan procesos manuales." data-en="Dashboards, automation, and flows that replace manual processes.">Dashboards, automatización y flujos que reemplazan procesos manuales.</p>
+          <p class="p-body" data-es="Soluciones concretas con <strong>alcance definido desde el inicio</strong>: herramientas que funcionan desde el primer día y siguen funcionando solas." data-en="Concrete solutions with <strong>scope defined from day one</strong>: tools that work immediately and keep running on their own.">Soluciones concretas con <strong>alcance definido desde el inicio</strong>: herramientas que funcionan desde el primer día y siguen funcionando solas.</p>
+          <div class="service-tags">
+            <span class="tag">Dashboards</span>
+            <span class="tag" data-es="Automatización" data-en="Automation">Automatización</span>
+            <span class="tag" data-es="Flujos digitales" data-en="Digital flows">Flujos digitales</span>
+            <span class="tag" data-es="IA aplicada" data-en="Applied AI">IA aplicada</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CÓMO TRABAJAMOS -->
+  <section class="process section-py" id="proceso">
+    <div class="wrap">
+      <div class="section-header">
+        <p class="label" data-es="Cómo trabajamos" data-en="How we work">Cómo trabajamos</p>
+        <h2 class="section-title" data-es="Principios<br>de trabajo." data-en="Working<br>principles.">Principios<br>de trabajo.</h2>
+      </div>
+      <div class="process-list">
+        <div class="process-item">
+          <div class="process-title-col">
+            <div class="process-num">01</div>
+            <div class="process-title" data-es="Diagnóstico primero." data-en="Diagnosis first.">Diagnóstico primero.</div>
+          </div>
+          <p class="p-body" data-es="Antes de proponer cualquier solución, entendemos el problema real. EVO entra con preguntas, no con catálogos. El alcance lo define el negocio, no el proveedor." data-en="Before proposing any solution, we understand the real problem. EVO comes in with questions, not catalogs. Scope is defined by the business, not the vendor.">Antes de proponer cualquier solución, entendemos el problema real. EVO entra con preguntas, no con catálogos. El alcance lo define el negocio, no el proveedor.</p>
+        </div>
+        <div class="process-item">
+          <div class="process-title-col">
+            <div class="process-num">02</div>
+            <div class="process-title" data-es="Trabajo real desde el primer día." data-en="Real work from day one.">Trabajo real desde el primer día.</div>
+          </div>
+          <p class="p-body" data-es="Sin grandes presentaciones ni fases de definición interminables. Los primeros entregables aparecen en la primera semana de colaboración. El cliente ve progreso desde el inicio." data-en="No big presentations, no endless definition phases. First deliverables appear in the first week. The client sees progress from day one.">Sin grandes presentaciones ni fases de definición interminables. Los primeros entregables aparecen en la primera semana de colaboración. El cliente ve progreso desde el inicio.</p>
+        </div>
+        <div class="process-item">
+          <div class="process-title-col">
+            <div class="process-num">03</div>
+            <div class="process-title" data-es="Sistemas, no dependencias." data-en="Systems, not dependencies.">Sistemas, no dependencias.</div>
+          </div>
+          <p class="p-body" data-es="El trabajo bien hecho termina cuando el cliente puede operar solo. Documentamos, transferimos criterio y nos aseguramos de que el equipo continúe sin EVO. No creamos dependencias a propósito." data-en="Well-done work ends when the client can operate on their own. We document, transfer judgment, and make sure the team can continue without EVO. We don't create dependencies on purpose.">El trabajo bien hecho termina cuando el cliente puede operar solo. Documentamos, transferimos criterio y nos aseguramos de que el equipo continúe sin EVO. No creamos dependencias a propósito.</p>
+        </div>
+        <div class="process-item">
+          <div class="process-title-col">
+            <div class="process-num">04</div>
+            <div class="process-title" data-es="Remoto por diseño." data-en="Remote by design.">Remoto por diseño.</div>
+          </div>
+          <p class="p-body" data-es="Trabajamos con negocios en todo el mundo. El proceso está diseñado para funcionar a cualquier distancia: documentación clara, comunicación asíncrona y entregables que no necesitan explicación adicional." data-en="We work with businesses worldwide. The process is designed to work at any distance: clear documentation, async communication, and deliverables that need no additional explanation.">Trabajamos con negocios en todo el mundo. El proceso está diseñado para funcionar a cualquier distancia: documentación clara, comunicación asíncrona y entregables que no necesitan explicación adicional.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMATOS -->
+  <section class="formats section-py">
+    <div class="wrap">
+      <div class="section-header">
+        <p class="label" data-es="Por dónde empezar" data-en="Where to start">Por dónde empezar</p>
+        <h2 class="section-title" data-es="Tres formas<br>de trabajar." data-en="Three ways<br>to engage.">Tres formas<br>de trabajar.</h2>
+      </div>
+      <div class="formats-grid">
+        <div class="format-card">
+          <div class="format-top">
+            <i class="ph ph-stethoscope format-icon" aria-hidden="true"></i>
+            <div class="format-name" data-es="Diagnóstico EVO" data-en="EVO Diagnostic">Diagnóstico EVO</div>
+          </div>
+          <p class="p-body" data-es="Sesión de 90 minutos más informe con el <strong>estado actual de comunicación</strong> y recomendaciones priorizadas. Para quienes no saben por dónde empezar." data-en="90-minute session plus a report on the <strong>current state of communications</strong> and prioritized recommendations. For those who don't know where to start.">Sesión de 90 minutos más informe con el <strong>estado actual de comunicación</strong> y recomendaciones priorizadas. Para quienes no saben por dónde empezar.</p>
+        </div>
+        <div class="format-card">
+          <div class="format-top">
+            <i class="ph ph-target format-icon" aria-hidden="true"></i>
+            <div class="format-name" data-es="Proyecto puntual" data-en="Fixed-scope project">Proyecto puntual</div>
+          </div>
+          <p class="p-body" data-es="<strong>Entregable definido, precio fijo, plazo cerrado.</strong> Sin horas abiertas ni alcance que se expande. Para quienes tienen una necesidad concreta." data-en="<strong>Defined deliverable, fixed price, closed deadline.</strong> No open hours, no expanding scope. For those with a specific need."><strong>Entregable definido, precio fijo, plazo cerrado.</strong> Sin horas abiertas ni alcance que se expande. Para quienes tienen una necesidad concreta.</p>
+        </div>
+        <div class="format-card">
+          <div class="format-top">
+            <i class="ph ph-calendar-check format-icon" aria-hidden="true"></i>
+            <div class="format-name" data-es="Retainer mensual" data-en="Monthly retainer">Retainer mensual</div>
+          </div>
+          <p class="p-body" data-es="Horas dedicadas, <strong>prioridad de agenda y continuidad de criterio</strong>. Para negocios que necesitan soporte recurrente sin contratar un equipo interno." data-en="Dedicated hours, <strong>calendar priority, and continuity of judgment</strong>. For businesses that need recurring support without hiring an internal team.">Horas dedicadas, <strong>prioridad de agenda y continuidad de criterio</strong>. Para negocios que necesitan soporte recurrente sin contratar un equipo interno.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section class="contact-section section-py" id="contacto">
+    <div class="wrap contact-grid">
+      <div>
+        <p class="label contact-cta-label" data-es="Contacto" data-en="Contact">Contacto</p>
+        <h2 class="contact-h2" data-es="Trabajemos<br>juntos." data-en="Let's work<br>together.">Trabajemos<br>juntos.</h2>
+        <p class="contact-sub" data-es="No necesitas tener un proyecto definido para escribirnos. Desde una duda puntual hasta un sistema completo, por aquí empezamos. Respondemos en menos de 24 horas." data-en="You don't need a defined project to reach out. From a quick question to a full system, this is where we start. We respond within 24 hours.">No necesitas tener un proyecto definido para escribirnos. Desde una duda puntual hasta un sistema completo, por aquí empezamos. Respondemos en menos de 24 horas.</p>
+        <div class="contact-direct">
+          <a href="mailto:info@evo.cl" class="btn btn-outline-white">
+            <i class="ph ph-envelope-simple" aria-hidden="true"></i> info@evo.cl
+          </a>
+          <a href="https://wa.me/56982393697?text=Hola%20Felipe%2C%20te%20escribo%20desde%20evo.cl" class="btn btn-outline-white" target="_blank" rel="noopener">
+            <i class="ph ph-whatsapp-logo" aria-hidden="true"></i> WhatsApp
+          </a>
+        </div>
+      </div>
+      <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <div class="form-row">
+          <div class="form-field">
+            <label class="form-label" for="nombre" data-es="Nombre" data-en="Name">Nombre</label>
+            <input class="form-input" type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="empresa" data-es="Empresa" data-en="Company">Empresa</label>
+            <input class="form-input" type="text" id="empresa" name="empresa" placeholder="Tu empresa">
+          </div>
+        </div>
+        <div class="form-field">
+          <label class="form-label" for="email">Email</label>
+          <input class="form-input" type="email" id="email" name="email" placeholder="tu@email.com" required>
+        </div>
+        <div class="form-field">
+          <label class="form-label" for="mensaje" data-es="Mensaje" data-en="Message">Mensaje</label>
+          <textarea class="form-input" id="mensaje" name="mensaje" placeholder="Cuéntanos qué necesitas..." required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">
+          <span data-es="Enviar mensaje" data-en="Send message">Enviar mensaje</span>
+          <i class="ph ph-arrow-right" aria-hidden="true"></i>
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-mark" aria-hidden="true"><span>EVO</span></div>
+        <span class="footer-name">EVO Creative Lab</span>
+      </div>
+      <span class="footer-info">© 2026 EVO Creative Lab · evo.cl</span>
+    </div>
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      const icon = document.getElementById('theme-icon');
+      const isDark = html.getAttribute('data-theme') === 'dark';
+      html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      icon.className = isDark ? 'ph ph-moon' : 'ph ph-sun';
+    }
+
+    function toggleLang() {
+      const html = document.documentElement;
+      const current = html.getAttribute('data-lang') || 'es';
+      const next = current === 'es' ? 'en' : 'es';
+      html.setAttribute('data-lang', next);
+      html.setAttribute('lang', next);
+      document.getElementById('lang-btn').textContent = next === 'es' ? 'EN' : 'ES';
+      applyLang(next);
+    }
+
+    function applyLang(lang) {
+      document.querySelectorAll('[data-es]').forEach(el => {
+        const text = el.getAttribute('data-' + lang);
+        if (text) el.innerHTML = text;
+      });
+      const placeholders = {
+        es: { nombre: 'Tu nombre', empresa: 'Tu empresa', mensaje: 'Cuéntanos qué necesitas...', email: 'tu@email.com' },
+        en: { nombre: 'Your name', empresa: 'Your company', mensaje: 'Tell us what you need...', email: 'your@email.com' }
+      };
+      Object.entries(placeholders[lang]).forEach(([id, text]) => {
+        const el = document.getElementById(id);
+        if (el) el.placeholder = text;
+      });
+    }
+  </script>
+
+</body>
+</html>
