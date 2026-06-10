@@ -1202,7 +1202,7 @@
         </a>
       </div>
     </div>
-    <form class="contact-form" action="https://formspree.io/f/xdavgvby" method="POST">
+    <form id="contact-form" class="contact-form" action="https://formspree.io/f/xdavgvby" method="POST">
       <div class="form-row">
         <div class="form-field">
           <label class="form-label" for="nombre">Nombre</label>
@@ -1272,30 +1272,6 @@
     }
   }
 
-  // Contact form — AJAX, no redirect
-  document.querySelector('.contact-form').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    const form = this;
-    const btn = form.querySelector('button[type="submit"]');
-    btn.disabled = true;
-    btn.textContent = 'Enviando…';
-    try {
-      const res = await fetch(form.action, {
-        method: 'POST',
-        body: new FormData(form),
-        headers: { Accept: 'application/json' }
-      });
-      if (res.ok) {
-        form.innerHTML = '<p class="form-thanks">Mensaje recibido. Te respondemos en menos de 24 horas.<br>— EVO Creative Lab</p>';
-      } else {
-        btn.disabled = false;
-        btn.textContent = 'Error, intenta de nuevo';
-      }
-    } catch {
-      btn.disabled = false;
-      btn.textContent = 'Error, intenta de nuevo';
-    }
-  });
 </script>
 
 <script>
