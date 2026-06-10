@@ -1356,8 +1356,7 @@
           headers: { 'Accept': 'application/json' }
         });
         if (res.ok) {
-          form.style.display = 'none';
-          if (thanks) thanks.style.display = 'block';
+          form.innerHTML = '<p class="form-thanks">Mensaje enviado. Te contactamos en menos de 24 horas.<br><span style="font-size:0.875em;opacity:0.7;">— EVO Creative Lab</span></p>';
         } else {
           btn.disabled = false;
           btn.textContent = 'Enviar mensaje';
