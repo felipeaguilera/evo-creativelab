@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CIMED — Ficha Técnica: Ventilador Modelo 9400</title>
+
+<!-- ================================================================
+     FICHA TÉCNICA — Ventilador Modelo 9400
+     CIMED Chile · Comercial e Industrial Medina Hnos. Ltda.
+     Preparado por EVO Creative Lab · evo.cl
+     Diseñado para impresión A4 / export PDF
+     ================================================================ -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ================================================================
+   TOKENS
+   ================================================================ */
+:root {
+  --red:        #D71920;
+  --red-dark:   #A8131A;
+  --red-10:     #FBE9EA;
+  --black:      #111111;
+  --charcoal:   #1C1C1E;
+  --gray-dark:  #3D3D3F;
+  --gray-mid:   #6B7280;
+  --gray-light: #D1D5DB;
+  --surface:    #F4F4F5;
+  --white:      #FFFFFF;
+  --text:       #111111;
+  --muted:      #6B7280;
+
+  --font-head: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+}
+
+/* ================================================================
+   BASE
+   ================================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 10pt; }
+body {
+  font-family: var(--font-body);
+  color: var(--text);
+  background: var(--surface);
+  -webkit-font-smoothing: antialiased;
+  padding: 24px;
+}
+img { display: block; max-width: 100%; }
+
+/* ================================================================
+   PAGE WRAPPER — A4 simulation on screen
+   ================================================================ */
+.page {
+  background: var(--white);
+  width: 210mm;
+  min-height: 297mm;
+  margin: 0 auto 32px;
+  padding: 14mm 14mm 12mm;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.page + .page { margin-top: 0; }
+
+/* ================================================================
+   HEADER
+   ================================================================ */
+.doc-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: 1px solid var(--gray-light);
+}
+.doc-header-left {
+  font-size: 7pt;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.doc-header-left span {
+  color: var(--red);
+  margin-right: 8px;
+}
+.doc-header-right {
+  font-size: 7pt;
+  color: var(--muted);
+  text-align: right;
+}
+
+/* ================================================================
+   TITLE BLOCK
+   ================================================================ */
+.title-block {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 10px 0 10px;
+  border-bottom: 3px solid var(--red);
+  margin-bottom: 14px;
+}
+.title-block-text .product-label {
+  font-size: 7pt;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 3px;
+}
+.title-block-text h1 {
+  font-family: var(--font-head);
+  font-size: 22pt;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--charcoal);
+  line-height: 1;
+}
+.title-block-text .subtitle {
+  font-size: 8.5pt;
+  color: var(--muted);
+  margin-top: 3px;
+  line-height: 1.4;
+}
+.title-block-logo img {
+  height: 32px;
+  width: auto;
+}
+
+/* ================================================================
+   HERO IMAGE
+   ================================================================ */
+.hero-img {
+  width: 100%;
+  height: 52mm;
+  overflow: hidden;
+  border-radius: 2px;
+  margin-bottom: 14px;
+  position: relative;
+  background: var(--surface);
+}
+.hero-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.hero-caption {
+  font-size: 7pt;
+  color: var(--muted);
+  font-style: italic;
+  margin-top: 4px;
+  margin-bottom: 12px;
+}
+
+/* ================================================================
+   TWO COLUMN BODY
+   ================================================================ */
+.body-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12mm;
+  flex: 1;
+}
+.col-left, .col-right {}
+
+/* Section heading */
+.col-heading {
+  font-family: var(--font-head);
+  font-size: 9pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--charcoal);
+  border-bottom: 1.5px solid var(--red);
+  padding-bottom: 3px;
+  margin-bottom: 8px;
+}
+
+/* Description text */
+.description-text {
+  font-size: 8.5pt;
+  line-height: 1.65;
+  color: var(--text);
+  margin-bottom: 12px;
+}
+
+/* Feature list */
+.feature-list {
+  list-style: none;
+  margin-bottom: 12px;
+}
+.feature-list li {
+  font-size: 8pt;
+  line-height: 1.55;
+  color: var(--gray-dark);
+  padding: 3px 0;
+  border-bottom: 1px solid var(--surface);
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+}
+.feature-list li::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--red);
+  flex-shrink: 0;
+  margin-top: 5px;
+}
+
+/* Spec summary (mini key-value) */
+.spec-summary {
+  background: var(--surface);
+  border-radius: 2px;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+}
+.spec-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 0;
+  border-bottom: 1px solid var(--white);
+  font-size: 7.5pt;
+}
+.spec-row:last-child { border-bottom: none; }
+.spec-label { color: var(--muted); }
+.spec-value { font-weight: 600; color: var(--black); text-align: right; }
+
+/* Product image right col */
+.product-img-wrap {
+  width: 100%;
+  height: 52mm;
+  overflow: hidden;
+  border-radius: 2px;
+  background: var(--surface);
+  margin-bottom: 8px;
+}
+.product-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  padding: 8px;
+}
+.product-img-caption {
+  font-size: 7pt;
+  color: var(--muted);
+  font-style: italic;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+/* ================================================================
+   COMPACT TABLE (page 1 — summary)
+   ================================================================ */
+.table-wrap { margin-bottom: 12px; }
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 7.5pt;
+}
+.data-table thead tr {
+  background: var(--charcoal);
+}
+.data-table thead th {
+  font-family: var(--font-head);
+  font-size: 7.5pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--white);
+  text-align: left;
+  padding: 5px 8px;
+}
+.data-table thead th:first-child { color: var(--red); }
+.data-table tbody td {
+  padding: 4.5px 8px;
+  border-bottom: 1px solid var(--surface);
+  color: var(--text);
+}
+.data-table tbody tr:nth-child(even) td { background: var(--surface); }
+.data-table tbody tr:hover td { background: var(--red-10); }
+.data-table .price { font-weight: 600; }
+.data-table tfoot td {
+  padding: 4px 8px;
+  font-size: 7pt;
+  color: var(--muted);
+  font-style: italic;
+  border-top: 1px solid var(--gray-light);
+}
+.group-row td {
+  background: var(--surface) !important;
+  font-family: var(--font-head);
+  font-size: 7.5pt;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--charcoal);
+  padding: 4px 8px !important;
+  border-left: 3px solid var(--red) !important;
+}
+
+/* ================================================================
+   PAGE 2 — FULL TECHNICAL TABLE
+   ================================================================ */
+.tech-section { margin-bottom: 14px; }
+.tech-section-title {
+  font-family: var(--font-head);
+  font-size: 9pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--charcoal);
+  border-bottom: 1.5px solid var(--red);
+  padding-bottom: 3px;
+  margin-bottom: 8px;
+}
+
+.full-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 7pt;
+}
+.full-table thead tr { background: var(--charcoal); }
+.full-table thead th {
+  font-family: var(--font-head);
+  font-size: 7.5pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--white);
+  text-align: left;
+  padding: 5px 7px;
+  white-space: nowrap;
+}
+.full-table thead th:first-child { color: rgba(255,255,255,0.65); min-width: 40mm; }
+.full-table .subgroup-header td {
+  background: var(--surface);
+  font-family: var(--font-head);
+  font-size: 7.5pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--charcoal);
+  padding: 4px 7px;
+  border-left: 3px solid var(--red);
+}
+.full-table tbody td {
+  padding: 4px 7px;
+  border-bottom: 1px solid var(--surface);
+  color: var(--text);
+  vertical-align: middle;
+}
+.full-table tbody tr:nth-child(even) td { background: var(--surface); }
+.full-table td.val { font-weight: 600; text-align: right; }
+.full-table tfoot td {
+  padding: 4px 7px;
+  font-size: 6.5pt;
+  color: var(--muted);
+  font-style: italic;
+  border-top: 1px solid var(--gray-light);
+}
+.full-table .highlight { color: var(--charcoal); font-weight: 700; }
+
+/* ================================================================
+   FOOTER
+   ================================================================ */
+.doc-footer {
+  margin-top: auto;
+  padding-top: 8px;
+  border-top: 1px solid var(--gray-light);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.doc-footer-left {
+  font-size: 7pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+.doc-footer-left span { color: var(--red); }
+.doc-footer-right {
+  font-size: 7pt;
+  color: var(--muted);
+  text-align: right;
+}
+
+/* ================================================================
+   PRINT STYLES
+   ================================================================ */
+@media print {
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+
+  body {
+    background: white;
+    padding: 0;
+    margin: 0;
+  }
+
+  .page {
+    box-shadow: none;
+    margin: 0;
+    padding: 14mm 14mm 12mm;
+    width: 100%;
+    min-height: 0;
+    height: auto;
+    page-break-after: always;
+  }
+
+  .page:last-child { page-break-after: avoid; }
+
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  a { text-decoration: none; color: inherit; }
+  .no-print { display: none !important; }
+}
+
+/* Screen toolbar */
+.print-toolbar {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  display: flex;
+  gap: 10px;
+  z-index: 100;
+}
+.print-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+.print-btn-primary { background: var(--red); color: white; }
+.print-btn-secondary { background: white; color: var(--black); border: 1px solid var(--gray-light); }
+
+@media print { .print-toolbar { display: none; } }
+</style>
+</head>
+
+<body>
+
+  <!-- PRINT TOOLBAR (screen only) -->
+  <div class="print-toolbar no-print">
+    <button class="print-btn print-btn-secondary" onclick="window.location.href='index.html'">← Volver</button>
+    <button class="print-btn print-btn-primary" onclick="window.print()">Imprimir / PDF</button>
+  </div>
+
+
+  <!-- ==============================================================
+       PÁGINA 1
+       ============================================================== -->
+  <div class="page">
+
+    <!-- DOC HEADER -->
+    <div class="doc-header">
+      <div class="doc-header-left">
+        <span>Ficha Técnica</span>· Última actualización: Junio 2026
+      </div>
+      <div class="doc-header-right">Página 1 de 2</div>
+    </div>
+
+    <!-- TITLE BLOCK -->
+    <div class="title-block">
+      <div class="title-block-text">
+        <div class="product-label">Ventiladores · Modelo 9400</div>
+        <h1>Ventilador Modelo 9400</h1>
+        <div class="subtitle">
+          Plástico técnico Zytel® PA66 GF-30 · Alta temperatura y alta RPM<br>
+          Para motores eléctricos NEMA/IEC · Fabricación nacional certificada
+        </div>
+      </div>
+      <div class="title-block-logo">
+        <img src="assets/logo-cimed-red.svg" alt="CIMED">
+      </div>
+    </div>
+
+    <!-- HERO IMAGE -->
+    <div class="hero-img">
+      <img src="assets/ventilador-9400.jpg" alt="Ventilador Modelo 9400 — CIMED Chile">
+    </div>
+    <p class="hero-caption">Ventilador Modelo 9400. Fabricado en Zytel® PA66 GF-30. Disponible en ejes de 25mm a 90mm.</p>
+
+    <!-- TWO COLUMN BODY -->
+    <div class="body-grid">
+
+      <!-- COLUMNA IZQUIERDA -->
+      <div class="col-left">
+
+        <div class="col-heading">Descripción</div>
+        <p class="description-text">
+          Ventilador fabricado con Plástico Técnico Zytel® Dupont 30% carga de Fibra de Vidrio y pigmentado color negro. Su robusta estructura entrega alta performance a altas temperaturas (222°C) en grandes motores a velocidades de 3.000 y 3.600 RPM.
+        </p>
+        <p class="description-text">
+          El Ventilador Centrífugo Modelo 9400 tiene 6 álabes trapezoidales que reducen considerablemente el nivel de ruido sin sacrificar el caudal de ventilación.
+        </p>
+
+        <div class="col-heading">Características</div>
+        <ul class="feature-list">
+          <li>Alta resistencia térmica hasta 222°C de operación continua</li>
+          <li>Fabricado en Zytel® PA66 GF-30 con 30% fibra de vidrio</li>
+          <li>6 álabes trapezoidales para bajo ruido y alta eficiencia</li>
+          <li>Operación a 3.000 y 3.600 RPM en motores de gran tamaño</li>
+          <li>Disponible en ejes de 25mm a 90mm (18 variantes estándar)</li>
+          <li>Altura estándar: 400mm en toda la serie</li>
+          <li>Compatible con motores NEMA e IEC</li>
+          <li>Color negro pigmentado, resistente a rayos UV industriales</li>
+        </ul>
+
+        <div class="col-heading">Especificaciones Clave</div>
+        <div class="spec-summary">
+          <div class="spec-row">
+            <span class="spec-label">Material</span>
+            <span class="spec-value">Zytel® PA66 GF-30</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-label">Temperatura máx.</span>
+            <span class="spec-value">222°C</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-label">Velocidades</span>
+            <span class="spec-value">3.000 / 3.600 RPM</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-label">N° de álabes</span>
+            <span class="spec-value">6</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-label">Altura estándar</span>
+            <span class="spec-value">400 mm</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-label">Compatibilidad</span>
+            <span class="spec-value">NEMA / IEC</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-label">Fabricación</span>
+            <span class="spec-value">Nacional — Chile</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- COLUMNA DERECHA -->
+      <div class="col-right">
+
+        <div class="col-heading">Tabla de Modelos — Serie 9400</div>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Código</th>
+                <th>Eje mm</th>
+                <th>Altura</th>
+                <th>Álabes</th>
+                <th>Precio</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="group-row"><td colspan="5">Ejes 25 – 35 mm</td></tr>
+              <tr><td>9400-25-400</td><td>25</td><td>400</td><td>6</td><td class="price">$18.478</td></tr>
+              <tr><td>9400-28-400</td><td>28</td><td>400</td><td>6</td><td class="price">$18.478</td></tr>
+              <tr><td>9400-30-400</td><td>30</td><td>400</td><td>6</td><td class="price">$18.478</td></tr>
+              <tr><td>9400-32-400</td><td>32</td><td>400</td><td>6</td><td class="price">$18.478</td></tr>
+              <tr><td>9400-34-400</td><td>34</td><td>400</td><td>6</td><td class="price">$18.478</td></tr>
+              <tr><td>9400-35-400</td><td>35</td><td>400</td><td>6</td><td class="price">$18.478</td></tr>
+              <tr class="group-row"><td colspan="5">Ejes 40 – 59 mm</td></tr>
+              <tr><td>9400-40-400</td><td>40</td><td>400</td><td>6</td><td class="price">$18.478</td></tr>
+              <tr><td>9400-45-400</td><td>45</td><td>400</td><td>6</td><td class="price">$18.478</td></tr>
+              <tr><td>9400-47-400</td><td>47</td><td>400</td><td>6</td><td class="price">$18.478</td></tr>
+              <tr><td>9400-48-400</td><td>48</td><td>400</td><td>6</td><td class="price">$18.478</td></tr>
+              <tr><td>9400-50-400</td><td>50</td><td>400</td><td>6</td><td class="price">$18.478</td></tr>
+              <tr><td>9400-59-400</td><td>59</td><td>400</td><td>6</td><td class="price">$18.478</td></tr>
+              <tr class="group-row"><td colspan="5">Ejes 65 – 90 mm</td></tr>
+              <tr><td>9400-65-400</td><td>65</td><td>400</td><td>6</td><td class="price">$18.478</td></tr>
+              <tr><td>9400-70-400</td><td>70</td><td>400</td><td>6</td><td class="price">$18.478</td></tr>
+              <tr><td>9400-75-400</td><td>75</td><td>400</td><td>6</td><td class="price">$18.478</td></tr>
+              <tr><td>9400-80-400</td><td>80</td><td>400</td><td>6</td><td class="price">$18.478</td></tr>
+              <tr><td>9400-90-400</td><td>90</td><td>400</td><td>6</td><td class="price">$18.478</td></tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="5">* Precios en CLP + IVA. Corte para esta serie: desde 240-400 con precio de $23.300 más IVA.</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- PAGE FOOTER -->
+    <div class="doc-footer">
+      <div class="doc-footer-left">
+        <span>CIMED</span> · Comercial e Industrial Medina Hnos. Ltda. · www.cimed.cl
+      </div>
+      <div class="doc-footer-right">
+        Página 1 de 2
+      </div>
+    </div>
+
+  </div><!-- end page 1 -->
+
+
+  <!-- ==============================================================
+       PÁGINA 2 — Tabla técnica del material Zytel PA66 GF-30
+       ============================================================== -->
+  <div class="page">
+
+    <!-- DOC HEADER -->
+    <div class="doc-header">
+      <div class="doc-header-left">
+        <span>Ficha Técnica</span>· Ventilador Modelo 9400 · Zytel® PA66 GF-30
+      </div>
+      <div class="doc-header-right">Página 2 de 2</div>
+    </div>
+
+    <!-- TITLE BLOCK (condensed) -->
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0 8px;border-bottom:3px solid var(--red);margin-bottom:14px;">
+      <div>
+        <div style="font-family:var(--font-head);font-size:16pt;font-weight:800;text-transform:uppercase;letter-spacing:.02em;color:var(--charcoal);">Ventilador Modelo 9400</div>
+        <div style="font-size:8pt;color:var(--muted);margin-top:2px;">Propiedades del material base · Plástico técnico Zytel® PA66 GF-30</div>
+      </div>
+      <img src="assets/logo-cimed-red.svg" alt="CIMED" style="height:28px;">
+    </div>
+
+    <!-- TABLA PROPIEDADES MECÁNICAS -->
+    <div class="tech-section">
+      <div class="tech-section-title">Propiedades Mecánicas</div>
+      <table class="full-table">
+        <thead>
+          <tr>
+            <th>Propiedad</th>
+            <th>Cond. de Prueba</th>
+            <th>Método ISO</th>
+            <th>Unidad</th>
+            <th>Seco</th>
+            <th>50% HR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Tensión a Rotura</td><td>5 mm/min</td><td>527-1/2</td><td>MPa</td><td class="val">208</td><td class="val">135</td></tr>
+          <tr><td>Deformación de Rotura</td><td>5 mm/min</td><td>527-1/2</td><td>MPa</td><td class="val">208</td><td class="val">135</td></tr>
+          <tr><td>Módulo de Tracción</td><td>5 mm/min</td><td>527-1/2</td><td>MPa</td><td class="val">208</td><td class="val">135</td></tr>
+          <tr><td>Resistencia al Impacto Charpy</td><td>23° / -30°C</td><td>179 eU</td><td>kJ/m²</td><td class="val">88 / 80</td><td class="val">97 / 73</td></tr>
+          <tr><td>Impacto Charpy c/ probeta entallada</td><td>23° / -30°C</td><td>179 eA</td><td>kJ/m²</td><td class="val">14 / 14</td><td class="val">16 / 16</td></tr>
+          <tr><td>Impacto Izod c/ probeta entallada</td><td>23° / -30°C</td><td>180/1a</td><td>kJ/m²</td><td class="val">13 / 12</td><td class="val">17 / 10</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- TABLA PROPIEDADES TÉRMICAS -->
+    <div class="tech-section">
+      <div class="tech-section-title">Propiedades Térmicas</div>
+      <table class="full-table">
+        <thead>
+          <tr>
+            <th>Propiedad</th>
+            <th>Cond. de Prueba</th>
+            <th>Método</th>
+            <th>Unidad</th>
+            <th>Seco</th>
+            <th>50% HR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Temperatura de Fusión</td><td>10 K/min</td><td>ISO 3146 C</td><td>°C</td><td class="val highlight">261</td><td class="val">—</td></tr>
+          <tr><td>Temp. deformación bajo carga (flexión)</td><td>0,45 MPa / 1,8 MPa</td><td>ISO 527-1/2</td><td>°C</td><td class="val">260 / 254</td><td class="val">—</td></tr>
+          <tr><td>Módulo de Tracción</td><td>50 N</td><td>ISO 527-1/2</td><td>°C</td><td class="val">208</td><td class="val">—</td></tr>
+          <tr><td>Expansión Térmica Lineal</td><td>Paralelo / Normal</td><td>ASTM E831</td><td>E-4/K</td><td class="val">0,22 / 1,07</td><td class="val">—</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- TABLA PROPIEDADES ELÉCTRICAS -->
+    <div class="tech-section">
+      <div class="tech-section-title">Propiedades Eléctricas</div>
+      <table class="full-table">
+        <thead>
+          <tr>
+            <th>Propiedad</th>
+            <th>Cond. de Prueba</th>
+            <th>Método</th>
+            <th>Unidad</th>
+            <th>Seco</th>
+            <th>50% HR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Resistencia Formación Línea de Fuga (CTI)</td><td>—</td><td>IEC 112</td><td>—</td><td class="val">—</td><td class="val">400</td></tr>
+          <tr><td>Rigidez Dieléctrica</td><td>—</td><td>IEC 243-1</td><td>kV/mm</td><td class="val">38</td><td class="val">32</td></tr>
+          <tr><td>Resistividad Superficial</td><td>—</td><td>IEC 93</td><td>Ohm</td><td class="val">&gt;E15</td><td class="val">E13</td></tr>
+          <tr><td>Resistividad Volumétrica</td><td>—</td><td>IEC 93</td><td>Ohm·cm</td><td class="val">&gt;E15</td><td class="val">E11</td></tr>
+          <tr><td>Permitividad relativa</td><td>100 Hz / 1 MHz</td><td>IEC 250</td><td>—</td><td class="val">4,4 / 4,1</td><td class="val">10,8 / 4,6</td></tr>
+          <tr><td>Factor de pérdida</td><td>100 Hz / 1 MHz</td><td>IEC 250</td><td>MPa</td><td class="val">70 / 150</td><td class="val">4600 / 650</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- TABLA PROPIEDADES DIVERSAS -->
+    <div class="tech-section">
+      <div class="tech-section-title">Propiedades Diversas</div>
+      <table class="full-table">
+        <thead>
+          <tr>
+            <th>Propiedad</th>
+            <th>Cond. de Prueba</th>
+            <th>Método</th>
+            <th>Unidad</th>
+            <th>Seco</th>
+            <th>50% HR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Densidad</td><td>—</td><td>ISO 1183</td><td>g/cm³</td><td class="val">1,37</td><td class="val">—</td></tr>
+          <tr><td>Inflamabilidad</td><td>1,6 mm</td><td>UL 94</td><td>—</td><td class="val">HB</td><td class="val">—</td></tr>
+          <tr><td>Absorción de Humedad</td><td>Saturación 23°C / 23°C 50%HR</td><td>Sim. ISO 62</td><td>%</td><td class="val">6,0 / 1,9</td><td class="val">—</td></tr>
+          <tr><td>Dureza Rockwell</td><td>Escala M / Escala R</td><td>ISO 2039/2</td><td>—</td><td class="val">104 / 124</td><td class="val">88 / 117</td></tr>
+          <tr><td>Ensayo de la Bola H</td><td>H 961/30</td><td>ISO 2039</td><td>MPa</td><td class="val">275</td><td class="val">187</td></tr>
+          <tr><td>Contracción de moldeo</td><td>Paralelo / Normal</td><td>ISO 2577</td><td>%</td><td class="val">0,3 / 1,1</td><td class="val">—</td></tr>
+        </tbody>
+        <tfoot>
+          <tr><td colspan="6">** 50% HR = 50% Humedad Relativa. Valores de referencia según ficha técnica Zytel® PA66 GF-30 Dupont.</td></tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <!-- NOTAS DE APLICACIÓN -->
+    <div style="background:var(--surface);border-radius:2px;padding:8px 12px;margin-top:10px;font-size:7pt;color:var(--muted);line-height:1.6;">
+      <strong style="color:var(--gray-dark);">Notas de aplicación:</strong> Los valores indicados corresponden al material base Zytel® PA66 GF-30 de Dupont utilizado en la fabricación del Ventilador Modelo 9400. Para cotizaciones o fabricaciones fuera de los tamaños estándar listados, contactar a ventas@cimed.cl o al +56 9 6515 8652.
+    </div>
+
+    <!-- PAGE FOOTER -->
+    <div class="doc-footer">
+      <div class="doc-footer-left">
+        <span>CIMED</span> · Comercial e Industrial Medina Hnos. Ltda. · www.cimed.cl
+      </div>
+      <div class="doc-footer-right">
+        Página 2 de 2
+      </div>
+    </div>
+
+  </div><!-- end page 2 -->
+
+</body>
+</html>
