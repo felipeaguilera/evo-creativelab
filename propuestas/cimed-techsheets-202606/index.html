@@ -7,7 +7,8 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
 
 <style>
 :root {
@@ -73,6 +74,94 @@ a { text-decoration: none; color: inherit; }
   line-height: 1.5;
   color: rgba(255,255,255,0.7);
 }
+
+/* EVO NAV */
+.evo-nav {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: blur(8px);
+  border-top: 2px solid #E4572E;
+  border-bottom: 1px solid #E8E8E8;
+}
+.evo-nav-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 40px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.evo-nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+.evo-nav-mark {
+  background: #E4572E;
+  width: 36px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.evo-nav-mark span {
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;
+  font-size: 10px;
+  color: #fff;
+  letter-spacing: 2px;
+  margin-right: -2px;
+}
+.evo-nav-name {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #111111;
+}
+.evo-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.evo-nav-back {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: #9CA3AF;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.15s;
+}
+.evo-nav-back:hover { color: #111111; }
+.evo-nav-cta {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: #E4572E;
+  color: white;
+  padding: 7px 13px;
+  border-radius: 2px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: background 0.15s;
+  white-space: nowrap;
+}
+.evo-nav-cta:hover { background: #C73D1B; }
+@media print { .evo-nav { display: none; } }
 
 /* RULE under hero */
 .hero-rule {
@@ -150,17 +239,17 @@ a { text-decoration: none; color: inherit; }
 .brief-contact a:hover { color: var(--red); }
 .brief-sep { color: var(--gray-line); }
 
-/* SECTION LABEL */
+/* SECTION HEADING — brand kit style */
 .section-label {
   font-family: var(--font-head);
-  font-size: 0.65rem;
+  font-size: 1.05rem;
   font-weight: 700;
-  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--gray-mid);
-  margin-bottom: 20px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid var(--gray-line);
+  letter-spacing: 0.06em;
+  color: var(--charcoal);
+  border-bottom: 1.5px solid var(--red);
+  padding-bottom: 6px;
+  margin-bottom: 24px;
 }
 
 /* CARDS */
@@ -173,23 +262,22 @@ a { text-decoration: none; color: inherit; }
 .card {
   background: var(--white);
   border: 1px solid var(--gray-line);
-  border-top: 3px solid var(--gray-line);
+  border-top: 3px solid var(--red);
   border-radius: 2px;
   padding: 24px 22px 22px;
   display: flex;
   flex-direction: column;
-  transition: border-top-color 0.15s, box-shadow 0.15s;
+  transition: box-shadow 0.15s;
 }
 .card:hover {
-  border-top-color: var(--red);
-  box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
 }
 .card-num {
   font-family: var(--font-head);
   font-size: 0.62rem;
   font-weight: 700;
   letter-spacing: 0.1em;
-  color: var(--gray-line);
+  color: var(--red);
   margin-bottom: 12px;
 }
 .card-title {
@@ -326,6 +414,22 @@ a { text-decoration: none; color: inherit; }
 </head>
 <body>
 
+  <!-- EVO NAV -->
+  <nav class="evo-nav">
+    <div class="evo-nav-inner">
+      <a href="https://evo.cl" class="evo-nav-brand" target="_blank">
+        <div class="evo-nav-mark"><span>EVO</span></div>
+        <span class="evo-nav-name">Creative Lab</span>
+      </a>
+      <div class="evo-nav-right">
+        <a href="https://evo.cl" class="evo-nav-back" target="_blank">← evo.cl</a>
+        <a href="https://evo.cl/#contacto" class="evo-nav-cta" target="_blank">
+          Contáctenos <i class="ph ph-paper-plane-tilt"></i>
+        </a>
+      </div>
+    </div>
+  </nav>
+
   <!-- HERO -->
   <div class="hero">
     <div class="hero-inner">
@@ -344,9 +448,9 @@ a { text-decoration: none; color: inherit; }
   <div class="main">
 
     <!-- PROPUESTA BRIEF -->
+    <div class="section-label">Propuesta de servicios</div>
     <div class="brief">
       <div class="brief-meta">
-        <span class="brief-badge">Propuesta de servicios</span>
         <span class="brief-date">Junio 2026</span>
       </div>
       <h2 class="brief-title">Sistema de fichas técnicas digitales para el catálogo CIMED</h2>
@@ -423,7 +527,9 @@ a { text-decoration: none; color: inherit; }
 
     <div class="footer">
       <div class="footer-brand">
-        Desarrollado por <a href="https://evo.cl" target="_blank">EVO Creative Lab</a> para CIMED
+        Comercial e Industrial Medina Hnos. Ltda. · <a href="https://www.cimed.cl" target="_blank">cimed.cl</a>
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        Desarrollado por <a href="https://evo.cl" target="_blank">EVO Creative Lab</a>
       </div>
       <div class="footer-date">Junio 2026</div>
     </div>
