@@ -331,7 +331,7 @@ a { text-decoration: none; color: inherit; }
   overflow: hidden;
   border-radius: 2px;
   margin-bottom: 40px;
-  min-height: 200px;
+  min-height: 220px;
   display: flex;
   align-items: flex-end;
 }
@@ -342,33 +342,44 @@ a { text-decoration: none; color: inherit; }
   height: 100%;
   object-fit: cover;
   object-position: center;
-  filter: brightness(0.45);
+  filter: brightness(0.38);
 }
 .promo-overlay {
   position: relative;
   z-index: 1;
   padding: 32px 28px;
   width: 100%;
-  background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 100%);
+  background: linear-gradient(to top, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.18) 100%);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px;
+  align-items: flex-end;
 }
+.promo-content { max-width: 520px; }
 .promo-label {
   font-family: var(--font-head);
   font-size: 0.62rem;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.55);
+  color: rgba(255,255,255,0.5);
   margin-bottom: 6px;
 }
 .promo-title {
   font-family: var(--font-head);
-  font-size: 1.5rem;
+  font-size: 1.45rem;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.02em;
   color: var(--white);
   line-height: 1.05;
-  margin-bottom: 14px;
+  margin-bottom: 10px;
+}
+.promo-body {
+  font-size: 0.8rem;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.68);
+  margin-bottom: 0;
 }
 .promo-cta {
   display: inline-flex;
@@ -381,13 +392,19 @@ a { text-decoration: none; color: inherit; }
   text-transform: uppercase;
   color: var(--white);
   background: var(--red);
-  padding: 8px 16px;
+  padding: 10px 18px;
   border-radius: 2px;
   text-decoration: none;
   transition: background 0.15s;
+  white-space: nowrap;
+  align-self: flex-end;
 }
 .promo-cta:hover { background: var(--red-dark); }
 .promo-cta svg { width: 11px; height: 11px; flex-shrink: 0; }
+@media (max-width: 620px) {
+  .promo-overlay { grid-template-columns: 1fr; }
+  .promo-cta { align-self: flex-start; }
+}
 
 /* FOOTER */
 .footer {
@@ -437,8 +454,8 @@ a { text-decoration: none; color: inherit; }
         <img src="assets/logo-cimed-white.svg" alt="CIMED">
       </div>
       <div class="hero-copy">
-        <div class="hero-heading">Fichas Técnicas<br>de Producto</div>
-        <p class="hero-sub">Partes eléctricas y equipos de medición</p>
+        <div class="hero-heading">Fichas Técnicas<br>Digitales</div>
+        <p class="hero-sub">Web · Mobile · PDF — desde una sola fuente</p>
       </div>
     </div>
   </div>
@@ -448,14 +465,14 @@ a { text-decoration: none; color: inherit; }
   <div class="main">
 
     <!-- PROPUESTA BRIEF -->
-    <div class="section-label">Propuesta de servicios</div>
+    <div class="section-label">Sobre esta propuesta</div>
     <div class="brief">
       <div class="brief-meta">
         <span class="brief-date">Junio 2026</span>
       </div>
-      <h2 class="brief-title">Sistema de fichas técnicas digitales para el catálogo CIMED</h2>
-      <p class="brief-body">Esta propuesta presenta un sistema de documentación técnica para el catálogo de partes eléctricas y equipos de medición de CIMED. El objetivo es reemplazar los Tech Sheets actuales por fichas digitales con identidad de marca consistente, aptas para consulta web y exportación a PDF sin pérdida de calidad.</p>
-      <p class="brief-body">Incluye: marco de identidad visual (paleta, tipografías, usos del logo), ficha técnica estándar de 1 página, y un formato extendido de 2 páginas para productos de alta especificación. Todo el contenido es demostrativo y usa datos reales del catálogo para ilustrar el resultado final.</p>
+      <h2 class="brief-title">Una ficha técnica que funciona en web, en mobile y en papel</h2>
+      <p class="brief-body">Los Tech Sheets de producto recorren un camino largo: desde la consulta de un técnico en terreno hasta una solicitud de cotización o una referencia de instalación. Esta propuesta muestra cómo ese mismo documento puede funcionar en pantalla, adaptarse a mobile y exportarse como PDF de alta calidad, todo desde un único archivo de código sin herramientas adicionales.</p>
+      <p class="brief-body">Para ilustrarlo, desarrollamos una identidad visual aplicada al estilo técnico e industrial de CIMED, y dos formatos de ficha con datos reales del catálogo: un formato estándar de una página y un formato extendido de dos páginas para productos con especificaciones más complejas.</p>
       <div class="brief-contact">
         <span>Consultas:</span>
         <a href="mailto:info@evo.cl">info@evo.cl</a>
@@ -466,16 +483,16 @@ a { text-decoration: none; color: inherit; }
       </div>
     </div>
 
-    <div class="section-label">Materiales disponibles</div>
+    <div class="section-label">Lo que incluye</div>
 
     <div class="cards">
 
       <div class="card">
         <div class="card-num">01</div>
-        <div class="card-title">Identidad<br>de marca</div>
-        <div class="card-desc">Paleta, tipografías, usos del logo y componentes base. El sistema visual que unifica todos los materiales de CIMED.</div>
+        <div class="card-title">Identidad<br>visual CIMED</div>
+        <div class="card-desc">Paleta de color, tipografías y sistema de uso del logo diseñado para el estilo técnico e industrial de CIMED. La base visual que unifica todos los formatos.</div>
         <a class="card-cta" href="brand-kit.html">
-          Ver brand kit
+          Ver identidad
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M3 8h10M9 4l4 4-4 4"/>
           </svg>
@@ -484,10 +501,10 @@ a { text-decoration: none; color: inherit; }
 
       <div class="card">
         <div class="card-num">02</div>
-        <div class="card-title">Ventilador<br>Modelo 9400</div>
-        <div class="card-desc">Ficha técnica estándar con foto del producto, descripción y tabla de modelos disponibles. Formato 1 página, apto para PDF.</div>
+        <div class="card-title">Ficha<br>estándar</div>
+        <div class="card-desc">Formato de una página: foto del producto, descripción técnica y tabla de modelos. Vista mobile integrada. Imprime en A4 directamente desde el browser. Demo: Ventilador Modelo 9400.</div>
         <a class="card-cta" href="ficha-simple.html">
-          Ver ficha
+          Ver ficha estándar
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M3 8h10M9 4l4 4-4 4"/>
           </svg>
@@ -496,10 +513,10 @@ a { text-decoration: none; color: inherit; }
 
       <div class="card">
         <div class="card-num">03</div>
-        <div class="card-title">Ficha técnica<br>extendida</div>
-        <div class="card-desc">Formato de referencia para productos de alta especificación: 2 páginas, propiedades de material y tablas técnicas completas.</div>
+        <div class="card-title">Ficha<br>extendida</div>
+        <div class="card-desc">Formato de dos páginas para productos con especificaciones complejas: propiedades de material, comparativa de modelos, tabla de accesorios e instrucciones de instalación. Demo: Placa de Borne PBM22.</div>
         <a class="card-cta" href="ficha-compleja.html">
-          Ver ficha
+          Ver ficha extendida
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M3 8h10M9 4l4 4-4 4"/>
           </svg>
@@ -508,16 +525,19 @@ a { text-decoration: none; color: inherit; }
 
     </div>
 
-    <p class="note">Los contenidos de este sitio son <strong>demostrativos.</strong> La ficha extendida utiliza datos de referencia para ilustrar el formato completo. Los materiales finales se desarrollan con información oficial de CIMED.</p>
+    <p class="note">Los contenidos de este sitio son <strong>demostrativos</strong> y usan datos reales del catálogo CIMED para ilustrar el resultado final. Los materiales de producción se desarrollan con información oficial validada por CIMED.</p>
 
     <!-- PROMO MINERÍA -->
     <div class="promo">
       <img class="promo-img" src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=1200&auto=format&fit=crop&q=80" alt="Industria minera">
       <div class="promo-overlay">
-        <div class="promo-label">EVO Creative Lab</div>
-        <div class="promo-title">Soluciones para<br>la industria minera</div>
+        <div class="promo-content">
+          <div class="promo-label">EVO Creative Lab · Industria</div>
+          <div class="promo-title">Más proyectos<br>para el sector industrial</div>
+          <p class="promo-body">Sistemas de documentación técnica, identidad de marca, brandbooks, manuales y herramientas web para empresas del sector industrial y minero en Chile. Cada proyecto parte de entender el negocio antes de diseñar cualquier cosa.</p>
+        </div>
         <a class="promo-cta" href="https://www.evo.cl/industria/mineria" target="_blank">
-          Ver otros proyectos
+          Ver proyectos
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M3 8h10M9 4l4 4-4 4"/>
           </svg>
