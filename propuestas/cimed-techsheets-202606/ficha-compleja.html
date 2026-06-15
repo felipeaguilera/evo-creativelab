@@ -136,29 +136,33 @@ img { display: block; max-width: 100%; }
 }
 
 /* ================================================================
-   HERO IMAGE
+   HERO IMAGES (two-image grid)
    ================================================================ */
-.hero-img {
-  width: 100%;
-  height: 52mm;
+.product-imgs {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 6px;
+  margin-bottom: 5px;
+}
+.product-img-wrap {
   overflow: hidden;
   border-radius: 2px;
-  margin-bottom: 14px;
-  position: relative;
   background: var(--surface);
+  height: 52mm;
 }
-.hero-img img {
+.product-img-wrap img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
 }
-.hero-caption {
+.product-img-wrap.main img  { object-position: center center; }
+.product-img-wrap.detail img { object-position: 55% 35%; transform: scale(1.6); transform-origin: 55% 35%; }
+.img-caption {
   font-size: 7pt;
   color: var(--muted);
   font-style: italic;
-  margin-top: 4px;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
+  grid-column: 1 / -1;
 }
 
 /* ================================================================
@@ -399,64 +403,81 @@ img { display: block; max-width: 100%; }
 }
 
 /* ================================================================
+   MOBILE RESPONSIVE
+   ================================================================ */
+@media screen and (max-width: 620px) {
+  body { padding: 0; background: var(--white); }
+  .page { width: 100%; min-height: unset; padding: 20px 16px 24px; box-shadow: none; border-radius: 0; margin-bottom: 0; }
+  .title-block { flex-direction: column-reverse; gap: 10px; }
+  .title-block-text h1 { font-size: 18pt; }
+  .title-block-logo img { height: 26px; }
+  .product-imgs { grid-template-columns: 1fr; }
+  .product-img-wrap { height: 52vw; max-height: 240px; }
+  .body-grid { grid-template-columns: 1fr; gap: 0; }
+  .col-right { margin-top: 16px; }
+}
+
+/* ── FORCE MOBILE PREVIEW (desktop toggle) ── */
+body.mobile-preview {
+  background: #e8e8e8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 16px;
+}
+body.mobile-preview .page {
+  width: 390px;
+  min-height: unset;
+  padding: 20px 16px 24px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+body.mobile-preview .page:last-child { margin-bottom: 80px; }
+body.mobile-preview .title-block { flex-direction: column-reverse; gap: 10px; }
+body.mobile-preview .title-block-text h1 { font-size: 18pt; }
+body.mobile-preview .title-block-logo img { height: 26px; }
+body.mobile-preview .product-imgs { grid-template-columns: 1fr; }
+body.mobile-preview .product-img-wrap { height: 180px; }
+body.mobile-preview .body-grid { grid-template-columns: 1fr; gap: 0; }
+body.mobile-preview .col-right { margin-top: 16px; }
+
+/* ================================================================
    PRINT STYLES
    ================================================================ */
 @media print {
   * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
-
-  body {
-    background: white;
-    padding: 0;
-    margin: 0;
-  }
-
-  .page {
-    box-shadow: none;
-    margin: 0;
-    padding: 14mm 14mm 12mm;
-    width: 100%;
-    min-height: 0;
-    height: auto;
-    page-break-after: always;
-  }
-
+  body { background: white; padding: 0; margin: 0; display: block; }
+  .page { box-shadow: none; margin: 0; padding: 14mm 14mm 12mm; width: 210mm !important; min-height: 297mm; border-radius: 0; page-break-after: always; }
   .page:last-child { page-break-after: avoid; }
-
-  @page {
-    size: A4;
-    margin: 0;
-  }
-
+  @page { size: A4; margin: 0; }
   a { text-decoration: none; color: inherit; }
   .no-print { display: none !important; }
+  /* Reset mobile-preview overrides */
+  .title-block { flex-direction: row !important; }
+  .product-imgs { grid-template-columns: 1.4fr 1fr !important; }
+  .product-img-wrap { height: 52mm !important; }
+  .body-grid { grid-template-columns: 1fr 1fr !important; }
 }
 
 /* Screen toolbar */
 .print-toolbar {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-  display: flex;
-  gap: 10px;
-  z-index: 100;
+  position: fixed; bottom: 24px; right: 24px;
+  display: flex; gap: 10px; z-index: 100;
 }
 .print-btn {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  font-family: var(--font-body);
-  font-size: 0.82rem;
-  font-weight: 600;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  padding: 10px 20px; border: none; border-radius: 4px;
+  font-family: var(--font-body); font-size: 0.82rem; font-weight: 600;
+  cursor: pointer; display: flex; align-items: center; gap: 8px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15); transition: opacity 0.15s;
 }
+.print-btn:hover { opacity: 0.85; }
 .print-btn-primary { background: var(--red); color: white; }
 .print-btn-secondary { background: white; color: var(--black); border: 1px solid var(--gray-light); }
-
+.print-btn-mobile { background: var(--charcoal); color: white; }
+body.mobile-preview .print-btn-mobile { background: var(--red); }
 @media print { .print-toolbar { display: none; } }
+@media screen and (max-width: 620px) { .print-btn-mobile { display: none; } }
 </style>
 </head>
 
@@ -465,8 +486,21 @@ img { display: block; max-width: 100%; }
   <!-- PRINT TOOLBAR (screen only) -->
   <div class="print-toolbar no-print">
     <button class="print-btn print-btn-secondary" onclick="window.location.href='index.html'">← Volver</button>
+    <button class="print-btn print-btn-mobile" id="mobileToggle" onclick="toggleMobile()">Vista mobile</button>
     <button class="print-btn print-btn-primary" onclick="window.print()">Imprimir / PDF</button>
   </div>
+
+  <script>
+    (function() {
+      if (localStorage.getItem('cimed-mobile-preview') === '1') {
+        document.body.classList.add('mobile-preview');
+      }
+    })();
+    function toggleMobile() {
+      const active = document.body.classList.toggle('mobile-preview');
+      localStorage.setItem('cimed-mobile-preview', active ? '1' : '0');
+    }
+  </script>
 
 
   <!-- ==============================================================
@@ -497,11 +531,16 @@ img { display: block; max-width: 100%; }
       </div>
     </div>
 
-    <!-- HERO IMAGE -->
-    <div class="hero-img">
-      <img src="assets/ventilador-9400.jpg" alt="Ventilador Modelo 9400 — CIMED Chile">
+    <!-- HERO IMAGES -->
+    <div class="product-imgs">
+      <div class="product-img-wrap main">
+        <img src="assets/ventilador-9400.jpg" alt="Ventilador Modelo 9400 — CIMED Chile">
+      </div>
+      <div class="product-img-wrap detail">
+        <img src="assets/ventilador-9400.jpg" alt="Detalle constructivo — aletas y cubo central">
+      </div>
+      <div class="img-caption">Ventilador Modelo 9400. Fabricado en Zytel® PA66 GF-30. Disponible en ejes de 25mm a 90mm.</div>
     </div>
-    <p class="hero-caption">Ventilador Modelo 9400. Fabricado en Zytel® PA66 GF-30. Disponible en ejes de 25mm a 90mm.</p>
 
     <!-- TWO COLUMN BODY -->
     <div class="body-grid">
