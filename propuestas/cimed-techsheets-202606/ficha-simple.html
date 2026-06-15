@@ -106,32 +106,25 @@ img { display: block; max-width: 100%; }
   max-width: 140mm;
 }
 
-/* ── PRODUCT IMAGES ── */
-.product-imgs {
-  display: grid;
-  grid-template-columns: 1.4fr 1fr;
-  gap: 6px;
-  margin-bottom: 5px;
-}
+/* ── PRODUCT IMAGE ── */
 .product-img-wrap {
   overflow: hidden;
-  border-radius: 2px;
+  border-radius: 3px;
   background: var(--surface);
-  height: 64mm;
+  height: 62mm;
+  margin-bottom: 5px;
 }
 .product-img-wrap img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 35%;
 }
-.product-img-wrap.main img  { object-position: center center; }
-.product-img-wrap.detail img { object-position: 60% 40%; transform: scale(1.5); transform-origin: 60% 40%; }
 .img-caption {
   font-size: 7pt;
   color: var(--gray-mid);
   font-style: italic;
   margin-bottom: 14px;
-  grid-column: 1 / -1;
 }
 
 /* ── TABLE ── */
@@ -221,7 +214,6 @@ img { display: block; max-width: 100%; }
   }
   .title-block h1 { font-size: 22pt; }
   .title-block .logo img { height: 28px; }
-  .product-imgs { grid-template-columns: 1fr; }
   .product-img-wrap { height: 52vw; max-height: 260px; }
   .description { max-width: 100%; font-size: 9pt; }
   .doc-header { flex-wrap: wrap; gap: 4px; }
@@ -243,7 +235,6 @@ img { display: block; max-width: 100%; }
   }
   .title-block h1 { font-size: 22pt; }
   .title-block .logo img { height: 28px; }
-  .product-imgs { grid-template-columns: 1fr; }
   .product-img-wrap { height: 52vw; max-height: 260px; }
   .description { max-width: 100%; font-size: 9pt; }
   .doc-header { flex-wrap: wrap; gap: 4px; }
@@ -272,7 +263,6 @@ body.mobile-preview .title-block {
 }
 body.mobile-preview .title-block h1 { font-size: 22pt; }
 body.mobile-preview .title-block .logo img { height: 28px; }
-body.mobile-preview .product-imgs { grid-template-columns: 1fr; }
 body.mobile-preview .product-img-wrap { height: 180px; }
 body.mobile-preview .description { max-width: 100%; font-size: 9pt; }
 body.mobile-preview .doc-header { flex-wrap: wrap; gap: 4px; }
@@ -287,8 +277,7 @@ body.mobile-preview .doc-header { flex-wrap: wrap; gap: 4px; }
   /* Reset any mobile-preview overrides for print */
   .title-block { flex-direction: row !important; }
   .title-block h1 { font-size: 26pt !important; }
-  .product-imgs { grid-template-columns: 1.4fr 1fr !important; }
-  .product-img-wrap { height: 64mm !important; }
+  .product-img-wrap { height: 62mm !important; }
   .description { max-width: 140mm !important; font-size: 8.5pt !important; }
 }
 
@@ -305,7 +294,8 @@ body.mobile-preview .doc-header { flex-wrap: wrap; gap: 4px; }
 .print-btn:hover { opacity: 0.85; }
 .print-btn-primary { background: var(--red); color: white; }
 .print-btn-secondary { background: white; color: var(--black); border: 1px solid var(--gray-line); }
-.print-btn-mobile { background: var(--charcoal); color: white; }
+.print-btn-mobile { background: var(--charcoal); color: white; display: flex; align-items: center; gap: 6px; }
+.print-btn-mobile img { width: 16px; height: 16px; filter: invert(1); opacity: 0.9; }
 body.mobile-preview .print-btn-mobile { background: var(--red); }
 @media print { .print-toolbar { display: none; } }
 @media screen and (max-width: 620px) { .print-btn-mobile { display: none; } }
@@ -316,19 +306,34 @@ body.mobile-preview .print-btn-mobile { background: var(--red); }
 
   <div class="print-toolbar no-print">
     <button class="print-btn print-btn-secondary" onclick="window.location.href='index.html'">← Volver</button>
-    <button class="print-btn print-btn-mobile" id="mobileToggle" onclick="toggleMobile()">Vista mobile</button>
+    <button class="print-btn print-btn-mobile" id="mobileToggle" onclick="toggleMobile()">
+      <img id="toggleIcon" src="assets/icons/device-mobile.svg" alt="">
+      <span id="toggleLabel">Vista mobile</span>
+    </button>
     <button class="print-btn print-btn-primary" onclick="window.print()">Imprimir / PDF</button>
   </div>
 
   <script>
-    (function() {
-      if (localStorage.getItem('cimed-mobile-preview') === '1') {
-        document.body.classList.add('mobile-preview');
+    function syncToggleBtn(active) {
+      const icon = document.getElementById('toggleIcon');
+      const label = document.getElementById('toggleLabel');
+      if (active) {
+        icon.src = 'assets/icons/monitor.svg';
+        label.textContent = 'Vista desktop';
+      } else {
+        icon.src = 'assets/icons/device-mobile.svg';
+        label.textContent = 'Vista mobile';
       }
+    }
+    (function() {
+      const active = localStorage.getItem('cimed-mobile-preview') === '1';
+      if (active) document.body.classList.add('mobile-preview');
+      syncToggleBtn(active);
     })();
     function toggleMobile() {
       const active = document.body.classList.toggle('mobile-preview');
       localStorage.setItem('cimed-mobile-preview', active ? '1' : '0');
+      syncToggleBtn(active);
     }
   </script>
 
@@ -358,16 +363,11 @@ body.mobile-preview .print-btn-mobile { background: var(--red); }
       El Ventilador Centrífugo Modelo 9400 tiene 6 álabes trapezoidales que reducen considerablemente el nivel de ruido, sin sacrificar el nivel de ventilación.
     </p>
 
-    <!-- IMÁGENES -->
-    <div class="product-imgs">
-      <div class="product-img-wrap main">
-        <img src="assets/ventilador-9400.jpg" alt="Ventilador Modelo 9400 — vista general">
-      </div>
-      <div class="product-img-wrap detail">
-        <img src="assets/ventilador-9400.jpg" alt="Ventilador Modelo 9400 — detalle">
-      </div>
+    <!-- IMAGEN -->
+    <div class="product-img-wrap">
+      <img src="assets/ventilador-9400.jpg" alt="Ventilador Modelo 9400, CIMED Chile">
     </div>
-    <p class="img-caption">Izq: Ventilador Modelo 9400 completo · Der: Detalle álabe trapezoidal — Zytel® PA66 GF-30.</p>
+    <p class="img-caption">Ventilador Modelo 9400 · Zytel® PA66 GF-30 · 6 álabes trapezoidales · Alta resistencia térmica hasta 222 °C.</p>
 
     <!-- TABLA -->
     <div class="table-heading">Modelos disponibles</div>

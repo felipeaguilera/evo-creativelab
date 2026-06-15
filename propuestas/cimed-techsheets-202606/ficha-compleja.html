@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CIMED — Ficha Técnica: Ventilador Modelo 9400</title>
+<title>CIMED: Ficha Técnica PBM22</title>
 
 <!-- ================================================================
      FICHA TÉCNICA — Ventilador Modelo 9400
@@ -100,12 +100,17 @@ img { display: block; max-width: 100%; }
    TITLE BLOCK
    ================================================================ */
 .title-block {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding: 10px 0 10px;
+  display: grid;
+  grid-template-columns: 1fr 42%;
+  gap: 10mm;
+  align-items: center;
+  padding: 10px 0 14px;
   border-bottom: 3px solid var(--red);
   margin-bottom: 14px;
+}
+.title-block-text {
+  display: flex;
+  flex-direction: column;
 }
 .title-block-text .product-label {
   font-size: 7pt;
@@ -113,7 +118,7 @@ img { display: block; max-width: 100%; }
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--red);
-  margin-bottom: 3px;
+  margin-bottom: 4px;
 }
 .title-block-text h1 {
   font-family: var(--font-head);
@@ -127,42 +132,36 @@ img { display: block; max-width: 100%; }
 .title-block-text .subtitle {
   font-size: 8.5pt;
   color: var(--muted);
-  margin-top: 3px;
-  line-height: 1.4;
+  margin-top: 4px;
+  line-height: 1.45;
+}
+.title-block-logo {
+  margin-top: 12px;
 }
 .title-block-logo img {
-  height: 32px;
+  height: 28px;
   width: auto;
 }
-
-/* ================================================================
-   HERO IMAGES (two-image grid)
-   ================================================================ */
-.product-imgs {
-  display: grid;
-  grid-template-columns: 1.4fr 1fr;
-  gap: 6px;
-  margin-bottom: 5px;
-}
-.product-img-wrap {
+.title-block-image {
+  background: #f4f4f4;
+  border-radius: 4px;
   overflow: hidden;
-  border-radius: 2px;
-  background: var(--surface);
-  height: 52mm;
+  height: 54mm;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.product-img-wrap img {
+.title-block-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  padding: 14px;
 }
-.product-img-wrap.main img  { object-position: center center; }
-.product-img-wrap.detail img { object-position: 55% 35%; transform: scale(1.6); transform-origin: 55% 35%; }
 .img-caption {
   font-size: 7pt;
   color: var(--muted);
   font-style: italic;
   margin-bottom: 14px;
-  grid-column: 1 / -1;
 }
 
 /* ================================================================
@@ -335,6 +334,7 @@ img { display: block; max-width: 100%; }
   width: 100%;
   border-collapse: collapse;
   font-size: 7pt;
+  table-layout: fixed;
 }
 .full-table thead tr { background: var(--charcoal); }
 .full-table thead th {
@@ -346,7 +346,9 @@ img { display: block; max-width: 100%; }
   color: var(--white);
   text-align: left;
   padding: 5px 7px;
-  white-space: nowrap;
+  white-space: normal;
+  word-break: break-word;
+  vertical-align: bottom;
 }
 .full-table thead th:first-child { color: rgba(255,255,255,0.65); min-width: 40mm; }
 .full-table .subgroup-header td {
@@ -408,11 +410,10 @@ img { display: block; max-width: 100%; }
 @media screen and (max-width: 620px) {
   body { padding: 0; background: var(--white); }
   .page { width: 100%; min-height: unset; padding: 20px 16px 24px; box-shadow: none; border-radius: 0; margin-bottom: 0; }
-  .title-block { flex-direction: column-reverse; gap: 10px; }
+  .title-block { grid-template-columns: 1fr; gap: 10px; }
+  .title-block-image { height: 56vw; max-height: 220px; order: -1; }
   .title-block-text h1 { font-size: 18pt; }
-  .title-block-logo img { height: 26px; }
-  .product-imgs { grid-template-columns: 1fr; }
-  .product-img-wrap { height: 52vw; max-height: 240px; }
+  .title-block-logo img { height: 24px; }
   .body-grid { grid-template-columns: 1fr; gap: 0; }
   .col-right { margin-top: 16px; }
 }
@@ -434,11 +435,10 @@ body.mobile-preview .page {
   margin-bottom: 20px;
 }
 body.mobile-preview .page:last-child { margin-bottom: 80px; }
-body.mobile-preview .title-block { flex-direction: column-reverse; gap: 10px; }
+body.mobile-preview .title-block { grid-template-columns: 1fr; gap: 10px; }
+body.mobile-preview .title-block-image { height: 180px; order: -1; }
 body.mobile-preview .title-block-text h1 { font-size: 18pt; }
-body.mobile-preview .title-block-logo img { height: 26px; }
-body.mobile-preview .product-imgs { grid-template-columns: 1fr; }
-body.mobile-preview .product-img-wrap { height: 180px; }
+body.mobile-preview .title-block-logo img { height: 24px; }
 body.mobile-preview .body-grid { grid-template-columns: 1fr; gap: 0; }
 body.mobile-preview .col-right { margin-top: 16px; }
 
@@ -454,9 +454,8 @@ body.mobile-preview .col-right { margin-top: 16px; }
   a { text-decoration: none; color: inherit; }
   .no-print { display: none !important; }
   /* Reset mobile-preview overrides */
-  .title-block { flex-direction: row !important; }
-  .product-imgs { grid-template-columns: 1.4fr 1fr !important; }
-  .product-img-wrap { height: 52mm !important; }
+  .title-block { grid-template-columns: 1fr 42% !important; gap: 10mm !important; }
+  .title-block-image { height: 54mm !important; order: 0 !important; }
   .body-grid { grid-template-columns: 1fr 1fr !important; }
 }
 
@@ -474,7 +473,8 @@ body.mobile-preview .col-right { margin-top: 16px; }
 .print-btn:hover { opacity: 0.85; }
 .print-btn-primary { background: var(--red); color: white; }
 .print-btn-secondary { background: white; color: var(--black); border: 1px solid var(--gray-light); }
-.print-btn-mobile { background: var(--charcoal); color: white; }
+.print-btn-mobile { background: var(--charcoal); color: white; display: flex; align-items: center; gap: 6px; }
+.print-btn-mobile img { width: 16px; height: 16px; filter: invert(1); opacity: 0.9; }
 body.mobile-preview .print-btn-mobile { background: var(--red); }
 @media print { .print-toolbar { display: none; } }
 @media screen and (max-width: 620px) { .print-btn-mobile { display: none; } }
@@ -486,19 +486,34 @@ body.mobile-preview .print-btn-mobile { background: var(--red); }
   <!-- PRINT TOOLBAR (screen only) -->
   <div class="print-toolbar no-print">
     <button class="print-btn print-btn-secondary" onclick="window.location.href='index.html'">← Volver</button>
-    <button class="print-btn print-btn-mobile" id="mobileToggle" onclick="toggleMobile()">Vista mobile</button>
+    <button class="print-btn print-btn-mobile" id="mobileToggle" onclick="toggleMobile()">
+      <img id="toggleIcon" src="assets/icons/device-mobile.svg" alt="">
+      <span id="toggleLabel">Vista mobile</span>
+    </button>
     <button class="print-btn print-btn-primary" onclick="window.print()">Imprimir / PDF</button>
   </div>
 
   <script>
-    (function() {
-      if (localStorage.getItem('cimed-mobile-preview') === '1') {
-        document.body.classList.add('mobile-preview');
+    function syncToggleBtn(active) {
+      const icon = document.getElementById('toggleIcon');
+      const label = document.getElementById('toggleLabel');
+      if (active) {
+        icon.src = 'assets/icons/monitor.svg';
+        label.textContent = 'Vista desktop';
+      } else {
+        icon.src = 'assets/icons/device-mobile.svg';
+        label.textContent = 'Vista mobile';
       }
+    }
+    (function() {
+      const active = localStorage.getItem('cimed-mobile-preview') === '1';
+      if (active) document.body.classList.add('mobile-preview');
+      syncToggleBtn(active);
     })();
     function toggleMobile() {
       const active = document.body.classList.toggle('mobile-preview');
       localStorage.setItem('cimed-mobile-preview', active ? '1' : '0');
+      syncToggleBtn(active);
     }
   </script>
 
@@ -525,22 +540,15 @@ body.mobile-preview .print-btn-mobile { background: var(--red); }
           Baquelita negra de alta resistencia · Pernos M5 × P08 · Para motores 1 a 5 Hp<br>
           Compatible con motores NEMA/IEC · Kit de puentes incluido · Fabricación nacional
         </div>
+        <div class="title-block-logo">
+          <img src="assets/logo-cimed-red.svg" alt="CIMED">
+        </div>
       </div>
-      <div class="title-block-logo">
-        <img src="assets/logo-cimed-red.svg" alt="CIMED">
+      <div class="title-block-image">
+        <img src="assets/placa-borne-pbm22.jpg" alt="Placa de Borne PBM22, CIMED Chile">
       </div>
     </div>
-
-    <!-- HERO IMAGES -->
-    <div class="product-imgs">
-      <div class="product-img-wrap main" style="background:#fff;">
-        <img src="assets/placa-borne-pbm22.jpg" alt="Placa de Borne PBM22 — CIMED Chile" style="object-fit:contain;padding:8px;">
-      </div>
-      <div class="product-img-wrap detail" style="background:#f0f0f0;">
-        <img src="assets/placa-borne-pbm22.jpg" alt="Detalle pernos M5 y puentes de cobre — PBM22" style="object-fit:cover;object-position:50% 30%;transform:scale(2.2);transform-origin:50% 30%;">
-      </div>
-      <div class="img-caption">Placa de Borne Rectangular PBM22. Base en baquelita negro con pernos M5 × P08 y puentes de cobre incluidos. Código SKU: PBM22.</div>
-    </div>
+    <p class="img-caption">Placa de Borne Rectangular PBM22. Baquelita negro, pernos M5 × P08, puentes de cobre incluidos. SKU: PBM22.</p>
 
     <!-- TWO COLUMN BODY -->
     <div class="body-grid">
@@ -565,7 +573,7 @@ body.mobile-preview .print-btn-mobile { background: var(--red); }
           <li>Fabricación nacional certificada · 953 unidades en stock</li>
         </ul>
 
-        <div class="col-heading">Especificaciones — PBM22</div>
+        <div class="col-heading">Especificaciones: PBM22</div>
         <div class="spec-summary">
           <div class="spec-row">
             <span class="spec-label">Código SKU</span>
@@ -602,7 +610,7 @@ body.mobile-preview .print-btn-mobile { background: var(--red); }
       <!-- COLUMNA DERECHA -->
       <div class="col-right">
 
-        <div class="col-heading">Familia PBM — Precios por modelo</div>
+        <div class="col-heading">Familia PBM: Precios por modelo</div>
         <div class="table-wrap">
           <table class="data-table">
             <thead>
@@ -617,15 +625,15 @@ body.mobile-preview .print-btn-mobile { background: var(--red); }
             <tbody>
               <tr class="group-row"><td colspan="5">Rango bajo (0,5 – 5 Hp)</td></tr>
               <tr><td>PBM11</td><td>40 × 25</td><td>M4 × P07</td><td>0,5 – 3 Hp</td><td class="price">$5.795</td></tr>
-              <tr><td>PBM15</td><td>—</td><td>—</td><td>—</td><td class="price">$5.795</td></tr>
+              <tr><td>PBM15</td><td>-</td><td>-</td><td>-</td><td class="price">$5.795</td></tr>
               <tr style="font-weight:600;"><td>PBM22</td><td>55 × 36</td><td>M5 × P08</td><td>1 – 5 Hp</td><td class="price">$6.117</td></tr>
-              <tr><td>PBM33</td><td>—</td><td>—</td><td>—</td><td class="price">$7.405</td></tr>
+              <tr><td>PBM33</td><td>-</td><td>-</td><td>-</td><td class="price">$7.405</td></tr>
               <tr class="group-row"><td colspan="5">Rango medio-alto (5 – 30 Hp)</td></tr>
-              <tr><td>PBM44</td><td>—</td><td>—</td><td>—</td><td class="price">$8.210</td></tr>
-              <tr><td>PBM55</td><td>—</td><td>—</td><td>—</td><td class="price">$8.532</td></tr>
-              <tr><td>PBM77</td><td>—</td><td>—</td><td>—</td><td class="price">$11.269</td></tr>
-              <tr><td>PBM88</td><td>—</td><td>—</td><td>—</td><td class="price">$12.074</td></tr>
-              <tr><td>PBM99</td><td>—</td><td>—</td><td>—</td><td class="price">$12.236</td></tr>
+              <tr><td>PBM44</td><td>-</td><td>-</td><td>-</td><td class="price">$8.210</td></tr>
+              <tr><td>PBM55</td><td>-</td><td>-</td><td>-</td><td class="price">$8.532</td></tr>
+              <tr><td>PBM77</td><td>-</td><td>-</td><td>-</td><td class="price">$11.269</td></tr>
+              <tr><td>PBM88</td><td>-</td><td>-</td><td>-</td><td class="price">$12.074</td></tr>
+              <tr><td>PBM99</td><td>-</td><td>-</td><td>-</td><td class="price">$12.236</td></tr>
             </tbody>
             <tfoot>
               <tr><td colspan="5">* Precios en CLP + IVA. Especificaciones completas disponibles en cimed.cl o a solicitud.</td></tr>
@@ -666,7 +674,7 @@ body.mobile-preview .print-btn-mobile { background: var(--red); }
     <!-- TITLE BLOCK (condensed) -->
     <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0 8px;border-bottom:3px solid var(--red);margin-bottom:14px;">
       <div>
-        <div style="font-family:var(--font-head);font-size:16pt;font-weight:800;text-transform:uppercase;letter-spacing:.02em;color:var(--charcoal);">Familia PBM — Comparativa Técnica</div>
+        <div style="font-family:var(--font-head);font-size:16pt;font-weight:800;text-transform:uppercase;letter-spacing:.02em;color:var(--charcoal);">Familia PBM: Comparativa Técnica</div>
         <div style="font-size:8pt;color:var(--muted);margin-top:2px;">Placas de borne rectangulares · Especificaciones por modelo · Fabricación nacional CIMED</div>
       </div>
       <img src="assets/logo-cimed-red.svg" alt="CIMED" style="height:28px;">
@@ -676,6 +684,15 @@ body.mobile-preview .print-btn-mobile { background: var(--red); }
     <div class="tech-section">
       <div class="tech-section-title">Especificaciones por modelo</div>
       <table class="full-table">
+        <colgroup>
+          <col style="width:15%">
+          <col style="width:13%">
+          <col style="width:15%">
+          <col style="width:14%">
+          <col style="width:17%">
+          <col style="width:13%">
+          <col style="width:13%">
+        </colgroup>
         <thead>
           <tr>
             <th>Modelo</th>
@@ -690,15 +707,15 @@ body.mobile-preview .print-btn-mobile { background: var(--red); }
         <tbody>
           <tr class="subgroup-header"><td colspan="7">Motores pequeños · 0,5 a 5 Hp</td></tr>
           <tr><td>PBM11</td><td>40 × 25</td><td>M4 × P07</td><td class="val">15 mm</td><td class="val">9 – 12</td><td class="val">0,5 – 3</td><td class="val">$5.795</td></tr>
-          <tr><td>PBM15</td><td>—</td><td>—</td><td class="val">—</td><td class="val">—</td><td class="val">—</td><td class="val">$5.795</td></tr>
+          <tr><td>PBM15</td><td>-</td><td>-</td><td class="val">-</td><td class="val">-</td><td class="val">-</td><td class="val">$5.795</td></tr>
           <tr style="background:var(--red-10) !important;"><td><strong>PBM22</strong></td><td><strong>55 × 36</strong></td><td><strong>M5 × P08</strong></td><td class="val"><strong>20 mm</strong></td><td class="val"><strong>12 – 27</strong></td><td class="val"><strong>1 – 5</strong></td><td class="val"><strong>$6.117</strong></td></tr>
-          <tr><td>PBM33</td><td>—</td><td>—</td><td class="val">—</td><td class="val">—</td><td class="val">—</td><td class="val">$7.405</td></tr>
+          <tr><td>PBM33</td><td>-</td><td>-</td><td class="val">-</td><td class="val">-</td><td class="val">-</td><td class="val">$7.405</td></tr>
           <tr class="subgroup-header"><td colspan="7">Motores medianos y grandes · 5 Hp en adelante</td></tr>
-          <tr><td>PBM44</td><td>—</td><td>—</td><td class="val">—</td><td class="val">—</td><td class="val">—</td><td class="val">$8.210</td></tr>
-          <tr><td>PBM55</td><td>—</td><td>—</td><td class="val">—</td><td class="val">—</td><td class="val">—</td><td class="val">$8.532</td></tr>
-          <tr><td>PBM77</td><td>—</td><td>—</td><td class="val">—</td><td class="val">—</td><td class="val">—</td><td class="val">$11.269</td></tr>
-          <tr><td>PBM88</td><td>—</td><td>—</td><td class="val">—</td><td class="val">—</td><td class="val">—</td><td class="val">$12.074</td></tr>
-          <tr><td>PBM99</td><td>—</td><td>—</td><td class="val">—</td><td class="val">—</td><td class="val">—</td><td class="val">$12.236</td></tr>
+          <tr><td>PBM44</td><td>-</td><td>-</td><td class="val">-</td><td class="val">-</td><td class="val">-</td><td class="val">$8.210</td></tr>
+          <tr><td>PBM55</td><td>-</td><td>-</td><td class="val">-</td><td class="val">-</td><td class="val">-</td><td class="val">$8.532</td></tr>
+          <tr><td>PBM77</td><td>-</td><td>-</td><td class="val">-</td><td class="val">-</td><td class="val">-</td><td class="val">$11.269</td></tr>
+          <tr><td>PBM88</td><td>-</td><td>-</td><td class="val">-</td><td class="val">-</td><td class="val">-</td><td class="val">$12.074</td></tr>
+          <tr><td>PBM99</td><td>-</td><td>-</td><td class="val">-</td><td class="val">-</td><td class="val">-</td><td class="val">$12.236</td></tr>
         </tbody>
         <tfoot>
           <tr><td colspan="7">* Precios en CLP + IVA. Especificaciones completas disponibles en cimed.cl o por solicitud a ventas@cimed.cl</td></tr>
@@ -710,6 +727,12 @@ body.mobile-preview .print-btn-mobile { background: var(--red); }
     <div class="tech-section">
       <div class="tech-section-title">Accesorios compatibles</div>
       <table class="full-table">
+        <colgroup>
+          <col style="width:22%">
+          <col style="width:42%">
+          <col style="width:21%">
+          <col style="width:15%">
+        </colgroup>
         <thead>
           <tr>
             <th>Código</th>
@@ -758,7 +781,7 @@ body.mobile-preview .print-btn-mobile { background: var(--red); }
 
     <!-- NOTAS -->
     <div style="background:var(--surface);border-radius:2px;padding:8px 12px;margin-top:10px;font-size:7pt;color:var(--muted);line-height:1.6;">
-      <strong style="color:var(--gray-dark);">Notas:</strong> Los campos marcados con "—" corresponden a modelos cuyas especificaciones técnicas completas están disponibles a solicitud en ventas@cimed.cl · +56 9 5811 0645. Stock verificado al 15 de junio de 2026.
+      <strong style="color:var(--gray-dark);">Notas:</strong> Los campos marcados con "-" corresponden a modelos cuyas especificaciones técnicas completas están disponibles a solicitud en ventas@cimed.cl · +56 9 5811 0645. Stock verificado al 15 de junio de 2026.
     </div>
 
     <!-- PAGE FOOTER -->
