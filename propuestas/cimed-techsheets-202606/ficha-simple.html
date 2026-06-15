@@ -205,13 +205,91 @@ img { display: block; max-width: 100%; }
 }
 .doc-footer strong { color: var(--red); }
 
+/* ── MOBILE STYLES (shared by @media and .mobile-preview class) ── */
+@mixin mobile-layout {
+  .page {
+    width: 100%;
+    min-height: unset;
+    padding: 20px 16px 24px;
+    box-shadow: none;
+    border-radius: 0;
+  }
+  .title-block {
+    flex-direction: column-reverse;
+    gap: 10px;
+    padding: 10px 0 12px;
+  }
+  .title-block h1 { font-size: 22pt; }
+  .title-block .logo img { height: 28px; }
+  .product-imgs { grid-template-columns: 1fr; }
+  .product-img-wrap { height: 52vw; max-height: 260px; }
+  .description { max-width: 100%; font-size: 9pt; }
+  .doc-header { flex-wrap: wrap; gap: 4px; }
+}
+
+@media screen and (max-width: 620px) {
+  body { padding: 0; background: var(--white); }
+  .page {
+    width: 100%;
+    min-height: unset;
+    padding: 20px 16px 24px;
+    box-shadow: none;
+    border-radius: 0;
+  }
+  .title-block {
+    flex-direction: column-reverse;
+    gap: 10px;
+    padding: 10px 0 12px;
+  }
+  .title-block h1 { font-size: 22pt; }
+  .title-block .logo img { height: 28px; }
+  .product-imgs { grid-template-columns: 1fr; }
+  .product-img-wrap { height: 52vw; max-height: 260px; }
+  .description { max-width: 100%; font-size: 9pt; }
+  .doc-header { flex-wrap: wrap; gap: 4px; }
+}
+
+/* ── FORCE MOBILE PREVIEW (desktop toggle) ── */
+body.mobile-preview {
+  background: #e8e8e8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 16px;
+}
+body.mobile-preview .page {
+  width: 390px;
+  min-height: unset;
+  padding: 20px 16px 24px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  border-radius: 12px;
+  margin-bottom: 80px;
+}
+body.mobile-preview .title-block {
+  flex-direction: column-reverse;
+  gap: 10px;
+  padding: 10px 0 12px;
+}
+body.mobile-preview .title-block h1 { font-size: 22pt; }
+body.mobile-preview .title-block .logo img { height: 28px; }
+body.mobile-preview .product-imgs { grid-template-columns: 1fr; }
+body.mobile-preview .product-img-wrap { height: 180px; }
+body.mobile-preview .description { max-width: 100%; font-size: 9pt; }
+body.mobile-preview .doc-header { flex-wrap: wrap; gap: 4px; }
+
 /* ── PRINT ── */
 @media print {
   * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
-  body { background: white; padding: 0; }
-  .page { box-shadow: none; margin: 0; width: 100%; }
+  body { background: white; padding: 0; display: block; }
+  .page { box-shadow: none; margin: 0; width: 210mm !important; min-height: 297mm; padding: 14mm 14mm 12mm; border-radius: 0; }
   @page { size: A4; margin: 0; }
   .no-print { display: none !important; }
+  /* Reset any mobile-preview overrides for print */
+  .title-block { flex-direction: row !important; }
+  .title-block h1 { font-size: 26pt !important; }
+  .product-imgs { grid-template-columns: 1.4fr 1fr !important; }
+  .product-img-wrap { height: 64mm !important; }
+  .description { max-width: 140mm !important; font-size: 8.5pt !important; }
 }
 
 .print-toolbar {
@@ -222,10 +300,15 @@ img { display: block; max-width: 100%; }
   padding: 10px 20px; border: none; border-radius: 4px;
   font-family: var(--font-body); font-size: 0.82rem; font-weight: 600;
   cursor: pointer; box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  transition: opacity 0.15s;
 }
+.print-btn:hover { opacity: 0.85; }
 .print-btn-primary { background: var(--red); color: white; }
 .print-btn-secondary { background: white; color: var(--black); border: 1px solid var(--gray-line); }
+.print-btn-mobile { background: var(--charcoal); color: white; }
+body.mobile-preview .print-btn-mobile { background: var(--red); }
 @media print { .print-toolbar { display: none; } }
+@media screen and (max-width: 620px) { .print-btn-mobile { display: none; } }
 </style>
 </head>
 
@@ -233,8 +316,21 @@ img { display: block; max-width: 100%; }
 
   <div class="print-toolbar no-print">
     <button class="print-btn print-btn-secondary" onclick="window.location.href='index.html'">← Volver</button>
+    <button class="print-btn print-btn-mobile" id="mobileToggle" onclick="toggleMobile()">Vista mobile</button>
     <button class="print-btn print-btn-primary" onclick="window.print()">Imprimir / PDF</button>
   </div>
+
+  <script>
+    (function() {
+      if (localStorage.getItem('cimed-mobile-preview') === '1') {
+        document.body.classList.add('mobile-preview');
+      }
+    })();
+    function toggleMobile() {
+      const active = document.body.classList.toggle('mobile-preview');
+      localStorage.setItem('cimed-mobile-preview', active ? '1' : '0');
+    }
+  </script>
 
   <div class="page">
 
