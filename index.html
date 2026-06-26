@@ -150,23 +150,11 @@
       text-decoration: none;
       flex-shrink: 0;
     }
-    /* CSS-only mark — no SVG file */
     .nav-mark {
-      background: var(--orange);
-      width: 38px;
-      height: 27px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      height: 28px;
+      width: auto;
+      display: block;
       flex-shrink: 0;
-    }
-    .nav-mark span {
-      font-family: 'Inter', sans-serif;
-      font-weight: 800;
-      font-size: 10px;
-      color: #fff;
-      letter-spacing: 2px;
-      margin-right: -2px; /* compensate trailing letter-spacing for visual centering */
     }
     .nav-name {
       font-family: 'Inter', sans-serif;
@@ -528,7 +516,7 @@
   <nav>
     <div class="nav-inner">
       <a href="#" class="nav-brand">
-        <div class="nav-mark" aria-hidden="true"><span>EVO</span></div>
+        <img src="assets/EVO-logo.svg" alt="EVO" class="nav-mark">
         <span class="nav-name">Communication Lab</span>
       </a>
       <ul class="nav-links">
