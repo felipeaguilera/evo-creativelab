@@ -112,4 +112,27 @@ export default async (req: Request, context: Context) => {
     });
 
     await transporter.sendMail({
-      from: `"${Netlify.env.get("SMTP_FRO
+      from: `"${Netlify.env.get("SMTP_FROM_NAME")}" <${Netlify.env.get("SMTP_FROM")}>`,
+      to: `"${TO_NAME}" <${TO_EMAIL}>`,
+      replyTo: `"${nombre}" <${email}>`,
+      subject,
+      text: plain,
+      html,
+    });
+
+    return new Response(JSON.stringify({ ok: true }), {
+      status: 200,
+      headers: { "Content-Type": "application/json" },
+    });
+  } catch (err) {
+    console.error("contact function error:", err);
+    return new Response(JSON.stringify({ ok: false }), {
+      status: 500,
+      headers: { "Content-Type": "application/json" },
+    });
+  }
+};
+
+export const config: Config = {
+  path: "/.netlify/functions/contact",
+};
