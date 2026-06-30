@@ -37,6 +37,21 @@ export default async (req: Request, context: Context) => {
   const mensaje = clean(form.get("mensaje"));
   const origin = req.headers.get("referer") || "evo.cl";
 
+  // Anti-spam: honeypot field — real users never fill this, bots do
+  const honeypot = clean(form.get("website"));
+  // Anti-spam: timing trap — a human takes more than 3s to fill the form
+  const ts = Number(form.get("ts") || 0);
+  const elapsed = ts ? Date.now() - ts : null;
+  const looksLikeBot = honeypot !== "" || (elapsed !== null && elapsed < 3000);
+
+  if (looksLikeBot) {
+    // Pretend success so bots don't learn to adapt — just don't send the email
+    return new Response(JSON.stringify({ ok: true }), {
+      status: 200,
+      headers: { "Content-Type": "application/json" },
+    });
+  }
+
   if (!nombre || !isValidEmail(email) || !mensaje) {
     return new Response(
       JSON.stringify({ ok: false, error: "Missing or invalid fields" }),
@@ -97,27 +112,4 @@ export default async (req: Request, context: Context) => {
     });
 
     await transporter.sendMail({
-      from: `"${Netlify.env.get("SMTP_FROM_NAME")}" <${Netlify.env.get("SMTP_FROM")}>`,
-      to: `"${TO_NAME}" <${TO_EMAIL}>`,
-      replyTo: `"${nombre}" <${email}>`,
-      subject,
-      text: plain,
-      html,
-    });
-
-    return new Response(JSON.stringify({ ok: true }), {
-      status: 200,
-      headers: { "Content-Type": "application/json" },
-    });
-  } catch (err) {
-    console.error("contact function error:", err);
-    return new Response(JSON.stringify({ ok: false }), {
-      status: 500,
-      headers: { "Content-Type": "application/json" },
-    });
-  }
-};
-
-export const config: Config = {
-  path: "/.netlify/functions/contact",
-};
+      from: `"${Netlify.env.get("SMTP_FRO
