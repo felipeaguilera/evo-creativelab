@@ -440,6 +440,14 @@ footer {
   color: rgba(255,255,255,0.2);
   letter-spacing: 0.05em;
 }
+.footer-info a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.footer-info a:hover {
+  color: rgba(255,255,255,0.5);
+}
 
 /* RESPONSIVE */
 @media (min-width: 540px) {
