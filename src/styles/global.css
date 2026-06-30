@@ -279,34 +279,26 @@ nav {
 }
 .about-heading .accent { color: var(--orange); }
 
-/* SERVICES — same list rhythm as process */
+/* SERVICES */
 .services { background: var(--bg); }
-.services-list { border-top: 1px solid var(--border); }
-.service-row {
-  padding: 1.875rem 0;
-  border-bottom: 1px solid var(--border);
+.services-grid {
   display: flex;
   flex-direction: column;
-  gap: 0.625rem;
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
 }
-.service-num {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.625rem;
-  color: var(--orange);
-  letter-spacing: 0.15em;
-  margin-bottom: 0.25rem;
+.service-card {
+  background: var(--bg);
+  padding: 1.5rem;
   display: flex;
-  align-items: center;
-  gap: 6px;
+  flex-direction: column;
+  gap: 0.875rem;
 }
-.service-num i { font-size: 13px; }
-.service-title {
-  font-family: 'Inter', sans-serif;
-  font-weight: 800;
-  font-size: clamp(1rem, 2.5vw, 1.25rem);
-  color: var(--text);
-  letter-spacing: -0.01em;
-}
+.service-top { display: flex; align-items: flex-start; justify-content: space-between; }
+.service-num { font-family: 'IBM Plex Mono', monospace; font-size: 0.6875rem; color: var(--orange); letter-spacing: 0.12em; }
+.service-icon { font-size: 22px; color: var(--orange); line-height: 1; }
+.service-name { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 1rem; color: var(--text); }
 
 /* PROCESS — work.co style */
 .process { background: var(--light); }
@@ -463,12 +455,7 @@ footer {
     align-items: start;
   }
   .about-heading { margin-bottom: 0; }
-  .service-row {
-    flex-direction: row;
-    gap: 4rem;
-    align-items: baseline;
-  }
-  .service-title-col { min-width: 280px; flex-shrink: 0; }
+  .services-grid { display: grid; grid-template-columns: 1fr 1fr; }
   .process-item {
     flex-direction: row;
     gap: 4rem;
