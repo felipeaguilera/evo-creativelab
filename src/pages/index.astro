@@ -1,0 +1,344 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="#" class="nav-brand">
+        <img src="/assets/EVO-logo.svg" alt="EVO" class="nav-mark">
+        <span class="nav-name">Communication Lab</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#servicios" data-es="Servicios" data-en="Services">Servicios</a></li>
+        <li><a href="#proceso" data-es="Proceso" data-en="Process">Proceso</a></li>
+        <li><a href="#contacto" data-es="Contacto" data-en="Contact">Contacto</a></li>
+      </ul>
+      <div class="nav-controls">
+        <button class="nav-toggle" onclick="toggleLang()" id="lang-btn" aria-label="Switch language">EN</button>
+        <button class="nav-toggle" onclick="toggleTheme()" id="theme-btn" aria-label="Toggle dark mode">
+          <i class="ph ph-moon" id="theme-icon"></i>
+        </button>
+        <a href="#contacto" class="nav-cta">
+          <span data-es="Escribir" data-en="Contact">Escribir</span>
+          <i class="ph ph-paper-plane-tilt" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-center wrap">
+      <p class="label hero-eyebrow" data-es="Estrategia · Marca · Sistemas digitales" data-en="Strategy · Brand · Digital systems">Estrategia · Marca · Sistemas digitales</p>
+      <h1 class="hero-h1">
+        <span data-es="CLARIDAD" data-en="CLARITY">CLARIDAD</span><br>
+        <span data-es="SOBRE EL" data-en="OVER THE">SOBRE EL</span><br>
+        <span data-es="RUIDO" data-en="NOISE">RUIDO</span><span class="hero-accent">.</span>
+      </h1>
+      <p class="hero-copy" data-es="EVO construye sistemas de comunicación: la identidad visual, los canales y los materiales que una empresa necesita para presentarse con claridad." data-en="EVO builds communication systems: the visual identity, channels, and materials a business needs to present itself clearly.">EVO construye sistemas de comunicación: la identidad visual, los canales y los materiales que una empresa necesita para presentarse con claridad.</p>
+      <div class="hero-actions">
+        <a href="mailto:info@evo.cl" class="btn btn-primary">
+          <i class="ph ph-envelope-simple" aria-hidden="true"></i>
+          <span data-es="Escribir por email" data-en="Get in touch">Escribir por email</span>
+        </a>
+        <a href="https://wa.me/56982393697?text=Hola%20Felipe%2C%20te%20escribo%20desde%20evo.cl" class="btn btn-outline" target="_blank" rel="noopener">
+          <i class="ph ph-whatsapp-logo" aria-hidden="true"></i>
+          <span>WhatsApp</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUÉ ES EVO -->
+  <section class="about section-py">
+    <div class="wrap">
+      <div class="about-inner">
+        <div>
+          <p class="label" data-es="Qué es EVO Communication Lab" data-en="What is EVO Communication Lab">Qué es EVO Communication Lab</p>
+          <h2 class="about-heading">
+            <span data-es="Estrategia<br>digital que<br>" data-en="Digital strategy<br>that<br>">Estrategia<br>digital que<br></span><span class="accent" data-es="se queda." data-en="lasts.">se queda.</span>
+          </h2>
+        </div>
+        <div>
+          <p class="p-lead" data-es="EVO Communication Lab diseña <strong>sistemas de comunicación</strong> para negocios: la identidad visual, los canales digitales y los materiales con los que una empresa se presenta ante sus clientes." data-en="EVO Communication Lab designs <strong>communication systems</strong> for businesses: the visual identity, digital channels, and materials a company uses to present itself to clients.">EVO Communication Lab diseña <strong>sistemas de comunicación</strong> para negocios: la identidad visual, los canales digitales y los materiales con los que una empresa se presenta ante sus clientes.</p>
+          <p class="p-body" data-es="Construimos <strong>sistemas</strong>: identidades que guían, sitios que convierten, materiales que el equipo puede usar solo. El resultado siempre es algo concreto que el cliente puede operar." data-en="We build <strong>systems</strong>: identities that guide, websites that convert, materials any team member can use. The result is always something concrete the client can operate.">Construimos <strong>sistemas</strong>: identidades que guían, sitios que convierten, materiales que el equipo puede usar solo. El resultado siempre es algo concreto que el cliente puede operar.</p>
+          <p class="p-body" data-es="El alcance lo define el negocio. Entramos con preguntas y salimos con un <strong>entregable documentado y transferible</strong>." data-en="Scope is defined by the business. We come in with questions and leave with a <strong>documented, transferable deliverable</strong>.">El alcance lo define el negocio. Entramos con preguntas y salimos con un <strong>entregable documentado y transferible</strong>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section class="services section-py" id="servicios">
+    <div class="wrap">
+      <div class="section-header">
+        <p class="label" data-es="Servicios" data-en="Services">Servicios</p>
+        <h2 class="section-title" data-es="De la estrategia<br>al entregable." data-en="From strategy<br>to delivery.">De la estrategia<br>al entregable.</h2>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-top">
+            <span class="service-num">01</span>
+            <i class="ph ph-palette service-icon" aria-hidden="true"></i>
+          </div>
+          <div class="service-name" data-es="Sistemas de marca" data-en="Brand systems">Sistemas de marca</div>
+          <p class="p-lead" data-es="Posicionamiento, identidad visual y tono de comunicación." data-en="Positioning, visual identity, and communication tone.">Posicionamiento, identidad visual y tono de comunicación.</p>
+          <p class="p-body" data-es="Para negocios que necesitan saber qué dicen antes de salir a decirlo. El resultado es un <strong>sistema que cualquier miembro del equipo puede aplicar</strong>, no solo una carpeta con archivos de diseño." data-en="For businesses that need to know what they're saying before going out to say it. The result is a <strong>system any team member can apply</strong>, not just a folder with design files.">Para negocios que necesitan saber qué dicen antes de salir a decirlo. El resultado es un <strong>sistema que cualquier miembro del equipo puede aplicar</strong>, no solo una carpeta con archivos de diseño.</p>
+          <div class="service-tags">
+            <span class="tag" data-es="Identidad visual" data-en="Visual identity">Identidad visual</span>
+            <span class="tag" data-es="Posicionamiento" data-en="Positioning">Posicionamiento</span>
+            <span class="tag" data-es="Guías de marca" data-en="Brand guidelines">Guías de marca</span>
+            <span class="tag">Naming</span>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-top">
+            <span class="service-num">02</span>
+            <i class="ph ph-globe-simple service-icon" aria-hidden="true"></i>
+          </div>
+          <div class="service-name" data-es="Canales digitales" data-en="Digital channels">Canales digitales</div>
+          <p class="p-lead" data-es="Sitios web, e-commerce y email marketing con propósito." data-en="Websites, e-commerce, and purposeful email marketing.">Sitios web, e-commerce y email marketing con propósito.</p>
+          <p class="p-body" data-es="Cada canal tiene un <strong>recorrido claro para quien llega</strong> y una razón de existir. Construidos para ser medibles, mantenibles y escalables." data-en="Each channel has a <strong>clear journey for every visitor</strong> and a reason to exist. Built to be measurable, maintainable, and scalable.">Cada canal tiene un <strong>recorrido claro para quien llega</strong> y una razón de existir. Construidos para ser medibles, mantenibles y escalables.</p>
+          <div class="service-tags">
+            <span class="tag" data-es="Sitios web" data-en="Websites">Sitios web</span>
+            <span class="tag">E-commerce</span>
+            <span class="tag" data-es="Email marketing" data-en="Email marketing">Email marketing</span>
+            <span class="tag">CRM</span>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-top">
+            <span class="service-num">03</span>
+            <i class="ph ph-presentation-chart service-icon" aria-hidden="true"></i>
+          </div>
+          <div class="service-name" data-es="Comunicación corporativa" data-en="Corporate communications">Comunicación corporativa</div>
+          <p class="p-lead" data-es="Presentaciones, propuestas y materiales de venta." data-en="Presentations, proposals, and sales materials.">Presentaciones, propuestas y materiales de venta.</p>
+          <p class="p-body" data-es="<strong>Documentos que funcionan sin explicación adicional</strong>. Todo lo que el negocio usa para comunicarse con clientes, socios e inversores." data-en="<strong>Documents that work without additional explanation</strong>. Everything the business uses to communicate with clients, partners, and investors."><strong>Documentos que funcionan sin explicación adicional</strong>. Todo lo que el negocio usa para comunicarse con clientes, socios e inversores.</p>
+          <div class="service-tags">
+            <span class="tag" data-es="Presentaciones" data-en="Presentations">Presentaciones</span>
+            <span class="tag" data-es="Propuestas" data-en="Proposals">Propuestas</span>
+            <span class="tag" data-es="Materiales de venta" data-en="Sales materials">Materiales de venta</span>
+            <span class="tag" data-es="Reportes" data-en="Reports">Reportes</span>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-top">
+            <span class="service-num">04</span>
+            <i class="ph ph-cpu service-icon" aria-hidden="true"></i>
+          </div>
+          <div class="service-name" data-es="Digitalización con IA" data-en="AI-powered digitalization">Digitalización con IA</div>
+          <p class="p-lead" data-es="Dashboards, automatización y flujos que reemplazan procesos manuales." data-en="Dashboards, automation, and flows that replace manual processes.">Dashboards, automatización y flujos que reemplazan procesos manuales.</p>
+          <p class="p-body" data-es="Soluciones concretas con <strong>alcance definido desde el inicio</strong>: herramientas que funcionan desde el primer día y siguen funcionando solas." data-en="Concrete solutions with <strong>scope defined from day one</strong>: tools that work immediately and keep running on their own.">Soluciones concretas con <strong>alcance definido desde el inicio</strong>: herramientas que funcionan desde el primer día y siguen funcionando solas.</p>
+          <div class="service-tags">
+            <span class="tag">Dashboards</span>
+            <span class="tag" data-es="Automatización" data-en="Automation">Automatización</span>
+            <span class="tag" data-es="Flujos digitales" data-en="Digital flows">Flujos digitales</span>
+            <span class="tag" data-es="IA aplicada" data-en="Applied AI">IA aplicada</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CÓMO TRABAJAMOS -->
+  <section class="process section-py" id="proceso">
+    <div class="wrap">
+      <div class="section-header">
+        <p class="label" data-es="Cómo trabajamos" data-en="How we work">Cómo trabajamos</p>
+        <h2 class="section-title" data-es="Principios<br>de trabajo." data-en="Working<br>principles.">Principios<br>de trabajo.</h2>
+      </div>
+      <div class="process-list">
+        <div class="process-item">
+          <div class="process-title-col">
+            <div class="process-num">01</div>
+            <div class="process-title" data-es="Diagnóstico primero." data-en="Diagnosis first.">Diagnóstico primero.</div>
+          </div>
+          <p class="p-body" data-es="Antes de proponer cualquier solución, entendemos el problema real. EVO entra con preguntas, no con catálogos. El alcance lo define el negocio, no el proveedor." data-en="Before proposing any solution, we understand the real problem. EVO comes in with questions, not catalogs. Scope is defined by the business, not the vendor.">Antes de proponer cualquier solución, entendemos el problema real. EVO entra con preguntas, no con catálogos. El alcance lo define el negocio, no el proveedor.</p>
+        </div>
+        <div class="process-item">
+          <div class="process-title-col">
+            <div class="process-num">02</div>
+            <div class="process-title" data-es="Trabajo real desde el primer día." data-en="Real work from day one.">Trabajo real desde el primer día.</div>
+          </div>
+          <p class="p-body" data-es="Sin grandes presentaciones ni fases de definición interminables. Los primeros entregables aparecen en la primera semana de colaboración. El cliente ve progreso desde el inicio." data-en="No big presentations, no endless definition phases. First deliverables appear in the first week. The client sees progress from day one.">Sin grandes presentaciones ni fases de definición interminables. Los primeros entregables aparecen en la primera semana de colaboración. El cliente ve progreso desde el inicio.</p>
+        </div>
+        <div class="process-item">
+          <div class="process-title-col">
+            <div class="process-num">03</div>
+            <div class="process-title" data-es="Sistemas, no dependencias." data-en="Systems, not dependencies.">Sistemas, no dependencias.</div>
+          </div>
+          <p class="p-body" data-es="El trabajo bien hecho termina cuando el cliente puede operar solo. Documentamos, transferimos criterio y nos aseguramos de que el equipo continúe sin EVO. No creamos dependencias a propósito." data-en="Well-done work ends when the client can operate on their own. We document, transfer judgment, and make sure the team can continue without EVO. We don't create dependencies on purpose.">El trabajo bien hecho termina cuando el cliente puede operar solo. Documentamos, transferimos criterio y nos aseguramos de que el equipo continúe sin EVO. No creamos dependencias a propósito.</p>
+        </div>
+        <div class="process-item">
+          <div class="process-title-col">
+            <div class="process-num">04</div>
+            <div class="process-title" data-es="Remoto por diseño." data-en="Remote by design.">Remoto por diseño.</div>
+          </div>
+          <p class="p-body" data-es="Trabajamos con negocios en todo el mundo. El proceso está diseñado para funcionar a cualquier distancia: documentación clara, comunicación asíncrona y entregables que no necesitan explicación adicional." data-en="We work with businesses worldwide. The process is designed to work at any distance: clear documentation, async communication, and deliverables that need no additional explanation.">Trabajamos con negocios en todo el mundo. El proceso está diseñado para funcionar a cualquier distancia: documentación clara, comunicación asíncrona y entregables que no necesitan explicación adicional.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMATOS -->
+  <section class="formats section-py">
+    <div class="wrap">
+      <div class="section-header">
+        <p class="label" data-es="Por dónde empezar" data-en="Where to start">Por dónde empezar</p>
+        <h2 class="section-title" data-es="Tres formas<br>de trabajar." data-en="Three ways<br>to engage.">Tres formas<br>de trabajar.</h2>
+      </div>
+      <div class="formats-grid">
+        <div class="format-card">
+          <div class="format-top">
+            <i class="ph ph-stethoscope format-icon" aria-hidden="true"></i>
+            <div class="format-name" data-es="Diagnóstico EVO" data-en="EVO Diagnostic">Diagnóstico EVO</div>
+          </div>
+          <p class="p-body" data-es="Sesión de 90 minutos más informe con el <strong>estado actual de comunicación</strong> y recomendaciones priorizadas. Para quienes no saben por dónde empezar." data-en="90-minute session plus a report on the <strong>current state of communications</strong> and prioritized recommendations. For those who don't know where to start.">Sesión de 90 minutos más informe con el <strong>estado actual de comunicación</strong> y recomendaciones priorizadas. Para quienes no saben por dónde empezar.</p>
+        </div>
+        <div class="format-card">
+          <div class="format-top">
+            <i class="ph ph-target format-icon" aria-hidden="true"></i>
+            <div class="format-name" data-es="Proyecto puntual" data-en="Fixed-scope project">Proyecto puntual</div>
+          </div>
+          <p class="p-body" data-es="<strong>Entregable definido, precio fijo, plazo cerrado.</strong> Sin horas abiertas ni alcance que se expande. Para quienes tienen una necesidad concreta." data-en="<strong>Defined deliverable, fixed price, closed deadline.</strong> No open hours, no expanding scope. For those with a specific need."><strong>Entregable definido, precio fijo, plazo cerrado.</strong> Sin horas abiertas ni alcance que se expande. Para quienes tienen una necesidad concreta.</p>
+        </div>
+        <div class="format-card">
+          <div class="format-top">
+            <i class="ph ph-calendar-check format-icon" aria-hidden="true"></i>
+            <div class="format-name" data-es="Retainer mensual" data-en="Monthly retainer">Retainer mensual</div>
+          </div>
+          <p class="p-body" data-es="Horas dedicadas, <strong>prioridad de agenda y continuidad de criterio</strong>. Para negocios que necesitan soporte recurrente sin contratar un equipo interno." data-en="Dedicated hours, <strong>calendar priority, and continuity of judgment</strong>. For businesses that need recurring support without hiring an internal team.">Horas dedicadas, <strong>prioridad de agenda y continuidad de criterio</strong>. Para negocios que necesitan soporte recurrente sin contratar un equipo interno.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section class="contact-section section-py" id="contacto">
+    <div class="wrap contact-grid">
+      <div>
+        <p class="label contact-cta-label" data-es="Contacto" data-en="Contact">Contacto</p>
+        <h2 class="contact-h2" data-es="Trabajemos<br>juntos." data-en="Let's work<br>together.">Trabajemos<br>juntos.</h2>
+        <p class="contact-sub" data-es="No necesitas tener un proyecto definido para escribirnos. Desde una duda puntual hasta un sistema completo, por aquí empezamos. Respondemos en menos de 24 horas." data-en="You don't need a defined project to reach out. From a quick question to a full system, this is where we start. We respond within 24 hours.">No necesitas tener un proyecto definido para escribirnos. Desde una duda puntual hasta un sistema completo, por aquí empezamos. Respondemos en menos de 24 horas.</p>
+        <div class="contact-direct">
+          <a href="mailto:info@evo.cl" class="btn btn-outline-white">
+            <i class="ph ph-envelope-simple" aria-hidden="true"></i> info@evo.cl
+          </a>
+          <a href="https://wa.me/56982393697?text=Hola%20Felipe%2C%20te%20escribo%20desde%20evo.cl" class="btn btn-outline-white" target="_blank" rel="noopener">
+            <i class="ph ph-whatsapp-logo" aria-hidden="true"></i> WhatsApp
+          </a>
+        </div>
+      </div>
+      <form class="contact-form" action="/.netlify/functions/contact" method="POST">
+        <div class="form-row">
+          <div class="form-field">
+            <label class="form-label" for="nombre" data-es="Nombre" data-en="Name">Nombre</label>
+            <input class="form-input" type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="empresa" data-es="Empresa" data-en="Company">Empresa</label>
+            <input class="form-input" type="text" id="empresa" name="empresa" placeholder="Tu empresa">
+          </div>
+        </div>
+        <div class="form-field">
+          <label class="form-label" for="email">Email</label>
+          <input class="form-input" type="email" id="email" name="email" placeholder="tu@email.com" required>
+        </div>
+        <div class="form-field">
+          <label class="form-label" for="mensaje" data-es="Mensaje" data-en="Message">Mensaje</label>
+          <textarea class="form-input" id="mensaje" name="mensaje" placeholder="Cuéntanos qué necesitas..." required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">
+          <span data-es="Enviar mensaje" data-en="Send message">Enviar mensaje</span>
+          <i class="ph ph-arrow-right" aria-hidden="true"></i>
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="/assets/EVO-logo.svg" alt="EVO" class="footer-mark">
+        <span class="footer-name">EVO Communication Lab</span>
+      </div>
+      <span class="footer-info">© 2026 EVO Communication Lab · evo.cl</span>
+    </div>
+  </footer>
+
+  <script is:inline>
+    // Contact form — AJAX, no redirect
+    document.querySelector('.contact-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const form = this;
+      const btn = form.querySelector('button[type="submit"]');
+      const lang = document.documentElement.getAttribute('data-lang') || 'es';
+
+      btn.disabled = true;
+      btn.innerHTML = lang === 'es'
+        ? '<span>Enviando...</span>'
+        : '<span>Sending...</span>';
+
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (res.ok) {
+          form.innerHTML = lang === 'es'
+            ? '<p class="form-thanks">Mensaje enviado. Te contactamos en menos de 24 horas.</p>'
+            : '<p class="form-thanks">Message sent. We\'ll be in touch within 24 hours.</p>';
+        } else {
+          btn.disabled = false;
+          btn.innerHTML = lang === 'es'
+            ? '<span>Enviar mensaje</span><i class="ph ph-arrow-right"></i>'
+            : '<span>Send message</span><i class="ph ph-arrow-right"></i>';
+        }
+      } catch(err) {
+        btn.disabled = false;
+        btn.innerHTML = lang === 'es'
+          ? '<span>Enviar mensaje</span><i class="ph ph-arrow-right"></i>'
+          : '<span>Send message</span><i class="ph ph-arrow-right"></i>';
+      }
+    });
+
+    function toggleTheme() {
+      const html = document.documentElement;
+      const icon = document.getElementById('theme-icon');
+      const isDark = html.getAttribute('data-theme') === 'dark';
+      html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      icon.className = isDark ? 'ph ph-moon' : 'ph ph-sun';
+    }
+
+    function toggleLang() {
+      const html = document.documentElement;
+      const current = html.getAttribute('data-lang') || 'es';
+      const next = current === 'es' ? 'en' : 'es';
+      html.setAttribute('data-lang', next);
+      html.setAttribute('lang', next);
+      document.getElementById('lang-btn').textContent = next === 'es' ? 'EN' : 'ES';
+      applyLang(next);
+    }
+
+    function applyLang(lang) {
+      document.querySelectorAll('[data-es]').forEach(el => {
+        const text = el.getAttribute('data-' + lang);
+        if (text) el.innerHTML = text;
+      });
+      const placeholders = {
+        es: { nombre: 'Tu nombre', empresa: 'Tu empresa', mensaje: 'Cuéntanos qué necesitas...', email: 'tu@email.com' },
+        en: { nombre: 'Your name', empresa: 'Your company', mensaje: 'Tell us what you need...', email: 'your@email.com' }
+      };
+      Object.entries(placeholders[lang]).forEach(([id, text]) => {
+        const el = document.getElementById(id);
+        if (el) el.placeholder = text;
+      });
+    }
+  </script>
+
+</Base>
