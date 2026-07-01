@@ -17,4 +17,14 @@ jobs:
         env:
           FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
         with:
-          server: premium345.web-hosti
+          server: premium345.web-hosting.com
+          username: felipe@evo.cl
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: /
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/.github/**
+            **/.vscode/**
+            **/Thumbs.db
+            **/.DS_Store
